@@ -174,38 +174,31 @@ ul{list-style:none;}
 /* =================================================================
    INTRO — Lapis Lazuli
    ================================================================= */
-.intro{background:var(--cream);padding:111px 0;}
+.intro{background:var(--cream);position:relative;}
 .intro__inner{
   max-width:var(--maxw);margin:0 auto;
-  padding:0 var(--pad);
-  position:relative;
+  padding:0 var(--pad) 116px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:40px;
+  gap:120px;
+  align-items:start;
 }
-.intro__stone{
-  position:absolute;
-  left:-40px;top:50%;transform:translateY(-50%);
-  width:780px;max-width:46%;
-  pointer-events:none;
+/* photo on the left, pulled up so it overlaps into the hero */
+.intro__photo{margin-top:-114px;}
+.intro__photo img{
+  display:block;width:100%;aspect-ratio:700/773;height:auto;object-fit:cover;
+  border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.28);
 }
-.intro__stone img{
-  width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;
-  border-radius:46% 54% 52% 48% / 50% 46% 54% 50%;
-  box-shadow:0 30px 80px rgba(26,40,90,.35);
+.intro__text{position:relative;padding-top:111px;}
+.intro__watermark{
+  position:absolute;top:8px;right:-30px;width:399px;max-width:48%;
+  opacity:.2;pointer-events:none;z-index:0;
 }
-.intro__text{
-  grid-column:2;
-  display:flex;flex-direction:column;gap:32px;
-  padding-left:40px;
-}
-.intro__head{display:flex;flex-direction:column;gap:32px;}
-.intro__body{display:flex;flex-direction:column;gap:24px;}
+.intro__head,.intro__body{position:relative;z-index:1;}
+.intro__head{display:flex;flex-direction:column;gap:24px;}
+.intro__body{display:flex;flex-direction:column;gap:24px;margin-top:40px;}
 .intro__body p{font-size:19px;line-height:32px;color:var(--body);}
-.intro__quote{
-  display:flex;gap:24px;align-items:stretch;padding-top:8px;
-}
+.intro__quote{display:flex;gap:24px;align-items:stretch;padding-top:8px;}
 .intro__quote .bar{width:3px;flex:none;background:var(--pink);}
 .intro__quote p{
   font-family:var(--serif);font-style:italic;font-size:24px;line-height:36px;color:var(--ink);
@@ -444,7 +437,7 @@ ul{list-style:none;}
   .h2{font-size:48px;}
   .hero__display{font-size:88px;line-height:.95;}
   .menu__text .h2,.card__head{font-size:44px;}
-  .intro__stone{max-width:38%;left:-60px;}
+  .intro__inner{gap:60px;}
   .menu__collage{width:46%;}
   .menu__main{width:100%;}
 }
@@ -477,10 +470,10 @@ ul{list-style:none;}
   .hero__display{font-size:64px;line-height:1;}
   .hero__subhead{font-size:18px;}
 
-  .intro__inner{grid-template-columns:1fr;}
-  .intro__stone{position:relative;left:auto;top:auto;transform:none;
-    width:60%;max-width:340px;margin:0 auto 24px;}
-  .intro__text{grid-column:1;padding-left:0;}
+  .intro__inner{grid-template-columns:1fr;gap:0;padding-bottom:64px;}
+  .intro__photo{margin-top:-80px;}
+  .intro__text{padding-top:40px;}
+  .intro__watermark{display:none;}
 
   .tt__cards{grid-template-columns:1fr;}
   .menu{flex-direction:column;align-items:stretch;padding:80px 40px;gap:48px;}
