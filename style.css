@@ -117,7 +117,7 @@ ul{list-style:none;}
   transition:background .3s ease, height .3s ease, padding .3s ease;
 }
 .nav--scrolled{
-  background:rgba(0,0,0,.30);
+  background:rgba(0,0,0,.80);
   height:84px;padding-top:16px;padding-bottom:16px;
 }
 .nav--scrolled .nav__logo img{height:52px;}
