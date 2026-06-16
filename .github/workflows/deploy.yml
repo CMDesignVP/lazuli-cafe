@@ -1,0 +1,46 @@
+name: Deploy to SiteGround (FTP)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Amíg nincsenek beállítva az FTP titkok, a deploy lépés kimarad (a futás zöld marad).
+      - name: Check FTP secrets
+        id: check
+        run: |
+          if [ -n "${{ secrets.FTP_SERVER }}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::FTP titkok (FTP_SERVER/FTP_USERNAME/FTP_PASSWORD) nincsenek beállítva — a deploy kihagyva."
+          fi
+
+      - name: 📂 Sync files to SiteGround via FTPS
+        if: steps.check.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          # A weboldal célmappája a tárhelyen. SiteGroundon jellemzően:
+          #   public_html/            (fő domain gyökere)
+          #   public_html/almappa/    (aldomain / almappa)
+          # Állítsd majd ezt a saját könyvtáradra (vagy tedd FTP_SERVER_DIR titokba).
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.figma/**
+            **/.DS_Store
+            **/README.md

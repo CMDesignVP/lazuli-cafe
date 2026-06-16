@@ -1,0 +1,5 @@
+# Munkacache (Figma export, referenciaképek) — nem kell a repóba
+.figma/
+
+# macOS
+.DS_Store

@@ -1,0 +1,522 @@
+/* =================================================================
+   Lazuli Café — Hub
+   Figma-faithful rebuild (1920px desktop reference) + responsive
+   ================================================================= */
+
+:root{
+  --cream:#F4EDE0;
+  --cream2:#FAF6EE;
+  --brown:#3A2818;
+  --ink:#1A1A1A;
+  --body:#2C2C2C;
+  --pink:#F16B82;
+  --gold:#E3C08B;
+  --gold2:#DAAF7C;
+  --teal:#88C5CB;
+  --footer:#1A1A1A;
+
+  --serif:'Playfair Display', Georgia, serif;
+  --sans:'Inter', -apple-system, sans-serif;
+  --mono:'Geist Mono', ui-monospace, monospace;
+
+  --maxw:1920px;
+  --pad:120px;     /* default horizontal section padding */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  color:var(--body);
+  background:var(--cream);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:13px;
+  letter-spacing:3px;
+  line-height:17px;
+  color:var(--pink);
+  text-transform:uppercase;
+}
+.eyebrow.center{text-align:center;}
+.h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:64px;
+  line-height:1.05;
+  color:var(--ink);
+}
+.h2.center{text-align:center;}
+.h2.light{color:#fff;}
+.pink{color:var(--pink);font-style:italic;}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--sans);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.btn--primary{
+  background:var(--pink);
+  color:#fff;
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  padding:18px 20px 18px 40px;
+  border-radius:9999px;
+  transition:filter .2s, transform .2s;
+}
+.btn--primary:hover{filter:brightness(1.06);transform:translateY(-1px);}
+.btn--ghost{
+  color:#fff;
+  font-weight:400;
+  font-size:16px;
+  padding:14px 8px;
+  opacity:.95;
+}
+.btn--ghost:hover{color:var(--pink);}
+.arrow{
+  width:16px;height:16px;flex:none;
+  background:no-repeat center/contain;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 8h9.5M8 3.5L13 8l-5 4.5' stroke='%23fff' stroke-width='1.33' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero{
+  position:relative;
+  min-height:100vh;
+  background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.25) 45%, rgba(0,0,0,.80)),
+             url("assets/hero-bg.jpg") center/cover no-repeat;
+  background-color:var(--brown);
+  display:flex;
+  align-items:center;
+  color:#fff;
+}
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  height:141px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 80px;
+  background:rgba(0,0,0,.30);
+  z-index:100;
+  transition:background .3s ease, height .3s ease, padding .3s ease;
+}
+.nav--scrolled{
+  background:rgba(0,0,0,.30);
+  height:84px;padding-top:16px;padding-bottom:16px;
+}
+.nav--scrolled .nav__logo img{height:52px;}
+/* fix width so the centered menu doesn't shift when the logo shrinks on scroll */
+.nav__logo{width:249px;flex:none;display:inline-flex;align-items:center;}
+.nav__logo img{height:85px;width:auto;transition:height .35s ease;}
+/* logo is dark-on-transparent in source; invert to read on dark nav */
+.nav__logo img,.footer__logo{filter:none;}
+.nav__menu{display:flex;align-items:center;gap:25px;}
+.nav__menu li{display:flex;align-items:center;gap:25px;}
+.nav__menu li:not(:last-child)::after{
+  content:"";width:10px;height:10px;border-radius:50%;
+  background:transparent;border:2px solid var(--pink);box-sizing:border-box;
+  flex:none;
+}
+.nav__menu a{
+  font-size:14px;color:#fff;opacity:.9;transition:opacity .2s,color .2s;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.nav__menu a:hover{opacity:1;color:var(--pink);}
+.nav__toggle{
+  display:none;flex-direction:column;gap:6px;
+  background:none;border:0;cursor:pointer;padding:8px;
+}
+.nav__toggle span{
+  display:block;width:28px;height:2px;background:#fff;border-radius:2px;
+  transition:transform .25s ease, opacity .2s ease;
+}
+
+.hero__content{
+  padding:0 var(--pad);
+  max-width:1420px;
+  margin-top:60px;        /* nudge below vertical center to match y≈298 */
+}
+.hero__display{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:120px;
+  line-height:114px;
+  letter-spacing:-1px;
+}
+.hero__subhead{
+  margin-top:26px;
+  max-width:540px;
+  font-size:20px;
+  line-height:30px;
+  opacity:.85;
+}
+.hero__ctas{
+  margin-top:26px;
+  display:flex;align-items:center;gap:24px;
+}
+
+/* =================================================================
+   INTRO — Lapis Lazuli
+   ================================================================= */
+.intro{background:var(--cream);padding:111px 0;}
+.intro__inner{
+  max-width:var(--maxw);margin:0 auto;
+  padding:0 var(--pad);
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+.intro__stone{
+  position:absolute;
+  left:-40px;top:50%;transform:translateY(-50%);
+  width:780px;max-width:46%;
+  pointer-events:none;
+}
+.intro__stone img{
+  width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;
+  border-radius:46% 54% 52% 48% / 50% 46% 54% 50%;
+  box-shadow:0 30px 80px rgba(26,40,90,.35);
+}
+.intro__text{
+  grid-column:2;
+  display:flex;flex-direction:column;gap:32px;
+  padding-left:40px;
+}
+.intro__head{display:flex;flex-direction:column;gap:32px;}
+.intro__body{display:flex;flex-direction:column;gap:24px;}
+.intro__body p{font-size:19px;line-height:32px;color:var(--body);}
+.intro__quote{
+  display:flex;gap:24px;align-items:stretch;padding-top:8px;
+}
+.intro__quote .bar{width:3px;flex:none;background:var(--pink);}
+.intro__quote p{
+  font-family:var(--serif);font-style:italic;font-size:24px;line-height:36px;color:var(--ink);
+}
+
+/* =================================================================
+   KÉT IDŐSÍK
+   ================================================================= */
+.tt{background:var(--cream2);padding:140px 0;}
+.tt__header{
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  text-align:center;margin-bottom:64px;
+}
+.tt__cards{
+  max-width:1680px;margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.card{
+  border-radius:6px;
+  padding:56px;
+  padding-bottom:0;
+  overflow:hidden;
+}
+.card--light{background:var(--cream);}
+.card--dark{background:var(--brown);}
+.card__time{
+  font-family:var(--mono);font-size:18px;letter-spacing:3px;
+  line-height:23px;color:var(--pink);
+}
+.card__num{
+  font-family:var(--serif);font-style:italic;font-size:80px;line-height:80px;color:var(--pink);
+  margin-top:20px;
+}
+.card__head{
+  font-family:var(--serif);font-weight:400;font-size:55px;line-height:1;
+  color:var(--ink);margin-top:20px;
+}
+.card__head.light{color:#fff;}
+.card__body{
+  font-size:16px;line-height:26px;margin-top:28px;color:var(--body);max-width:716px;
+}
+.card--dark .card__body{color:rgba(255,255,255,.85);}
+.card__list{margin-top:30px;display:flex;flex-direction:column;}
+.card__list li{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 0;
+  font-size:14px;line-height:17px;color:var(--body);
+}
+.card--dark .card__list li{color:rgba(255,255,255,.85);}
+.card__list li::before{
+  content:"";width:20px;height:1px;background:var(--pink);flex:none;
+}
+.card__img{margin-top:56px;border-radius:4px;overflow:hidden;
+  margin-left:-56px;margin-right:-56px;}
+.card__img img{width:100%;height:372px;object-fit:cover;}
+
+/* =================================================================
+   KÍNÁLAT
+   ================================================================= */
+.menu{
+  background:var(--cream);
+  display:flex;align-items:center;gap:80px;
+  padding:140px var(--pad);
+  max-width:var(--maxw);margin:0 auto;
+}
+.menu__collage{position:relative;width:800px;flex:none;min-height:660px;}
+.menu__watermark{
+  position:absolute;left:300px;top:380px;
+  font-family:'Funnel Display',var(--serif);font-size:220px;line-height:1;
+  color:var(--pink);opacity:.10;pointer-events:none;z-index:0;
+}
+.menu__main{
+  width:815px;max-width:none;height:580px;object-fit:cover;border-radius:10px;
+  position:relative;z-index:1;
+}
+.menu__overlay{
+  position:absolute;left:36px;top:472px;
+  width:326px;height:256px;object-fit:cover;
+  border:10px solid #fff;border-radius:4px;z-index:2;
+}
+.menu__text{flex:1;max-width:720px;display:flex;flex-direction:column;gap:28px;}
+.menu__text .h2{font-size:55px;}
+.menu__body{font-size:17px;line-height:28px;color:var(--body);max-width:460px;}
+.cat-list{display:flex;flex-direction:column;border-top:1px solid rgba(241,107,130,.3);}
+.cat-row{
+  display:flex;align-items:center;gap:24px;
+  padding:16px 0;
+  border-bottom:1px solid rgba(241,107,130,.3);
+}
+.cat-row .dash{width:20px;height:1px;background:var(--pink);flex:none;}
+.cat-name{
+  font-family:var(--mono);font-size:14px;letter-spacing:3px;color:var(--pink);
+  width:170px;flex:none;
+}
+.cat-desc{font-size:16px;color:var(--body);text-transform:uppercase;letter-spacing:.3px;}
+.menu__text .btn--primary{align-self:flex-start;margin-top:0;}
+
+/* =================================================================
+   VENDÉGVÉLEMÉNYEK
+   ================================================================= */
+.rev{
+  background:linear-gradient(rgba(58,40,24,.82),rgba(58,40,24,.82)),
+             url("assets/vendeg-bg.jpg") center/cover no-repeat;
+  background-color:var(--brown);
+  padding:50px var(--pad) 160px;
+  display:flex;flex-direction:column;align-items:center;gap:31px;
+  color:#fff;
+}
+.rev .h2{margin-bottom:0;font-style:italic;}
+.rev__quote{
+  width:900px;max-width:100%;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:40px 56px;text-align:center;border-radius:4px;
+}
+.rev__text{font-family:var(--serif);font-style:italic;font-size:32px;line-height:45px;color:#fff;}
+.rev__author{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);}
+.rev__divider{width:100px;height:2px;background:var(--pink);}
+
+/* =================================================================
+   HELYSZÍN
+   ================================================================= */
+.loc{
+  background:var(--cream2);
+  display:flex;align-items:flex-start;gap:106px;
+  padding:140px 120px 140px 213px;
+  width:100%;
+}
+.loc__left{width:616px;flex:none;display:flex;flex-direction:column;}
+.loc__left .h2{margin-top:24px;}
+.loc__body{font-size:17px;line-height:28px;margin-top:28px;max-width:480px;}
+.hours{margin-top:28px;border-top:1px solid rgba(241,107,130,.3);}
+.hours li{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:14px 0;border-bottom:1px solid rgba(241,107,130,.3);
+}
+.hours__key{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);
+}
+.hours__key .dash{width:20px;height:1px;background:var(--pink);flex:none;}
+.hours__val{font-size:20px;line-height:24px;color:var(--ink);}
+.contact{margin-top:28px;display:flex;flex-direction:column;gap:20px;padding-top:12px;}
+.cKey{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);}
+.cVal{font-size:22px;line-height:27px;color:var(--ink);margin-top:4px;}
+.loc__left .btn--primary{align-self:flex-start;margin-top:28px;}
+.loc__map{flex:1;}
+.loc__map img{width:100%;height:815px;object-fit:cover;border-radius:10px;}
+
+/* =================================================================
+   SOCIAL
+   ================================================================= */
+.social{
+  background:linear-gradient(rgba(244,237,224,.92),rgba(244,237,224,.92)),
+             url("assets/hero-bg.jpg") center/cover no-repeat;
+  background-color:var(--cream);
+  display:flex;align-items:center;justify-content:center;gap:100px;
+  padding:80px var(--pad);
+}
+.social__left{display:flex;flex-direction:column;gap:14px;}
+.social__head{font-family:var(--serif);font-style:italic;font-weight:400;font-size:40px;line-height:1.1;color:var(--ink);}
+.social__right{display:flex;flex-direction:row;align-items:center;gap:40px;}
+.social__link{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--brown);
+}
+.social__link img{width:32px;height:32px;}
+.social__link:hover{color:var(--pink);}
+
+/* =================================================================
+   LAZULI VILÁG
+   ================================================================= */
+.world{background:var(--cream2);padding:90px var(--pad);width:100%;}
+.world__header{display:flex;flex-direction:column;gap:14px;margin-bottom:48px;}
+.world__cards{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;}
+.wcard{
+  position:relative;border-radius:10px;overflow:hidden;
+  min-height:471px;display:flex;align-items:flex-end;
+  color:#fff;
+}
+.wcard--med{min-height:617px;}
+.wcard img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+}
+.wcard::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85));
+}
+.wcard__body{position:relative;z-index:2;padding:48px;max-width:560px;}
+.wcard__line{display:block;width:100px;height:3px;margin-bottom:18px;}
+.wcard__line.gold{background:var(--gold);}
+.wcard__line.teal{background:var(--teal);}
+.wcard__body h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:40px;letter-spacing:-1px;line-height:1.05;}
+.wcard__body p{margin-top:16px;font-size:17px;line-height:25px;color:#fff;}
+.wcard__go{
+  position:absolute;right:40px;bottom:40px;z-index:3;
+  width:60px;height:60px;border-radius:50%;
+  background:no-repeat center;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='18' viewBox='0 0 22 18' fill='none'%3E%3Cpath d='M2 9h17M11 2l8 7-8 7' stroke='%232C2C2C' stroke-width='3.33' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.wcard__go--gold{background-color:var(--gold);}
+.wcard__go--teal{background-color:var(--teal);}
+
+/* =================================================================
+   FOOTER
+   ================================================================= */
+.footer{background:var(--footer);color:#fff;padding:80px 140px 40px;}
+.footer__cols{display:grid;grid-template-columns:350px 350px 350px 350px;gap:80px;justify-content:space-between;}
+.footer__brand{display:flex;flex-direction:column;gap:16px;}
+.footer__logo{height:85px;width:auto;}
+.footer__badges{display:flex;gap:16px;}
+.badge{font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.3px;text-transform:uppercase;}
+.badge--gold{color:var(--gold2);}
+.badge--teal{color:var(--teal);}
+.footer__col{display:flex;flex-direction:column;gap:20px;}
+.footer__col a{line-height:1.2;}
+.footer__title{font-family:var(--mono);font-weight:500;font-size:16px;letter-spacing:3px;color:var(--pink);}
+.footer__col a{font-weight:300;font-size:16px;color:rgba(255,255,255,.8);transition:color .2s;}
+.footer__col a:hover{color:#fff;}
+.footer__social{display:flex;gap:16px;}
+.footer__social img{width:28px;height:28px;}
+.footer__divider{height:1px;background:rgba(255,255,255,.1);margin:48px 0 32px;}
+.footer__routes{display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:32px;}
+.footer__routes-label{font-family:'Montserrat',var(--sans);font-weight:600;font-size:18px;letter-spacing:1.26px;color:var(--pink);text-transform:uppercase;}
+.footer__routes img{height:40px;width:auto;}
+.footer__bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4);
+}
+.footer__legal a{color:inherit;transition:color .2s;}
+.footer__legal a:hover{color:#fff;}
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+@media (max-width:1280px){
+  .h2{font-size:48px;}
+  .hero__display{font-size:88px;line-height:.95;}
+  .menu__text .h2,.card__head{font-size:44px;}
+  .intro__stone{max-width:38%;left:-60px;}
+  .menu__collage{width:46%;}
+  .menu__main{width:100%;}
+}
+
+/* --- Hamburger nav kicsit korábban, hogy ne torlódjon a vízszintes menü --- */
+@media (max-width:1200px){
+  .hero{flex-direction:column;align-items:stretch;min-height:0;}
+  .nav{position:static;flex-wrap:wrap;gap:14px;height:auto;padding:18px 40px;justify-content:space-between;align-items:center;}
+  .nav--scrolled{height:auto;padding:18px 40px;}
+  .nav__logo{width:auto;}
+  .nav__logo img,.nav--scrolled .nav__logo img{height:54px;}
+  .nav__toggle{display:flex;}
+  .nav__menu{display:none;order:3;width:100%;flex-direction:column;gap:6px;padding-top:10px;}
+  .nav__menu li{gap:0;}
+  .nav__menu li:not(:last-child)::after{display:none;}
+  .nav__menu a{font-size:17px;padding:8px 0;}
+  .nav__cta{display:none;order:4;}
+  .nav--open .nav__menu{display:flex;}
+  .nav--open .nav__cta{display:inline-flex;}
+  .nav--open .nav__toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav--open .nav__toggle span:nth-child(2){opacity:0;}
+  .nav--open .nav__toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  .hero__content{padding:48px 80px 80px;margin-top:0;max-width:none;}
+}
+
+@media (max-width:900px){
+  :root{--pad:40px;}
+  .nav{padding:18px 24px;}
+  .hero__content{padding:56px 40px 72px;}
+  .hero__display{font-size:64px;line-height:1;}
+  .hero__subhead{font-size:18px;}
+
+  .intro__inner{grid-template-columns:1fr;}
+  .intro__stone{position:relative;left:auto;top:auto;transform:none;
+    width:60%;max-width:340px;margin:0 auto 24px;}
+  .intro__text{grid-column:1;padding-left:0;}
+
+  .tt__cards{grid-template-columns:1fr;}
+  .menu{flex-direction:column;align-items:stretch;padding:80px 40px;gap:48px;}
+  .menu__collage{width:100%;min-height:0;}
+  .menu__main{height:auto;}
+  .menu__watermark{font-size:120px;left:auto;right:0;top:auto;bottom:0;}
+  .menu__overlay{width:200px;height:160px;left:20px;top:auto;bottom:-40px;}
+
+  .rev__quote{padding:24px;}
+  .rev__text{font-size:24px;line-height:34px;}
+
+  .loc{flex-direction:column;padding:80px 40px;gap:48px;}
+  .loc__left{width:100%;}
+  .loc__map img{height:420px;}
+
+  .social{flex-direction:column;gap:32px;text-align:center;padding:56px 40px;}
+  .social__left{align-items:center;}
+
+  .world__cards{grid-template-columns:1fr;}
+  .wcard,.wcard--med{min-height:380px;}
+
+  .footer{padding:56px 40px 32px;}
+  .footer__cols{grid-template-columns:1fr 1fr;gap:40px;}
+  .footer__routes{flex-wrap:wrap;}
+  .footer__bottom{flex-direction:column;gap:12px;text-align:center;}
+}
+
+@media (max-width:560px){
+  .hero__display{font-size:48px;}
+  .h2{font-size:36px;}
+  .card{padding:32px;padding-bottom:0;}
+  .card__img{margin-left:-32px;margin-right:-32px;}
+  .card__num{font-size:60px;}
+  .menu__text .h2,.card__head{font-size:34px;}
+  .rev__text{font-size:20px;line-height:30px;}
+  .cat-name{width:110px;}
+  .footer__cols{grid-template-columns:1fr;}
+  .hero__ctas{flex-wrap:wrap;gap:12px;}
+}
