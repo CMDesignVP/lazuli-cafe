@@ -21,7 +21,7 @@
     </button>
     <ul class="nav__menu">
       <li><a href="#">főoldal</a></li>
-      <li><a href="assets/etlap-itallap.pdf" target="_blank" rel="noopener">étlap-itallap</a></li>
+      <li><a href="dokumentum.html?doc=etlap" target="_blank" rel="noopener">étlap-itallap</a></li>
       <li><a href="#vilag">Lazuli</a></li>
       <li><a href="#helyszin">Kapcsolat</a></li>
     </ul>
@@ -32,7 +32,7 @@
     <h1 class="hero__display">Lazulizz<br><span class="pink">velünk.</span></h1>
     <p class="hero__subhead">Fertő-táji pékség és kávézó. Reggel egy gyors Illy kávé, este egy hosszú beszélgetés — a lazuli kék nyugalmával.</p>
     <div class="hero__ctas">
-      <a class="btn btn--primary" href="assets/etlap-itallap.pdf" target="_blank" rel="noopener">étlap-itallap <span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--primary" href="dokumentum.html?doc=etlap" target="_blank" rel="noopener">étlap-itallap <span class="arrow" aria-hidden="true"></span></a>
       <a class="btn btn--ghost" href="tel:+36303767800">Hívj minket &nbsp;→</a>
     </div>
   </div>
@@ -116,7 +116,7 @@
       <li class="cat-row"><span class="dash"></span><span class="cat-name">HIDEG ITAL</span><span class="cat-desc">Limonádék, frissítők</span></li>
       <li class="cat-row"><span class="dash"></span><span class="cat-name">ALKOHOL</span><span class="cat-desc">Bor, koktél, gin (esténként)</span></li>
     </ul>
-    <a class="btn btn--primary" href="assets/etlap-itallap.pdf" target="_blank" rel="noopener">étlap-itallap <span class="arrow" aria-hidden="true"></span></a>
+    <a class="btn btn--primary" href="dokumentum.html?doc=etlap" target="_blank" rel="noopener">étlap-itallap <span class="arrow" aria-hidden="true"></span></a>
   </div>
 </section>
 
@@ -174,7 +174,7 @@
     <h2 class="h2">A Café csak egy <span class="pink">része.</span></h2>
   </div>
   <div class="world__cards">
-    <a class="wcard wcard--apartment" href="#">
+    <a class="wcard wcard--apartment" href="https://apartman.lazuli.hu/">
       <img src="assets/social-3.jpg" alt="Lazuli Apartment">
       <div class="wcard__body">
         <span class="wcard__line gold" aria-hidden="true"></span>
@@ -208,7 +208,6 @@
     <nav class="footer__col">
       <p class="footer__title">FELFEDEZÉS</p>
       <a href="#">Apartman</a>
-      <a href="#">Café</a>
       <a href="#">Longevity</a>
       <a href="#">Helyszín</a>
     </nav>
@@ -234,15 +233,34 @@
     <a href="#"><img src="assets/icon-googlemaps.png" alt="Google Maps"></a>
   </div>
   <div class="footer__bottom">
-    <span>© 2026 LAZULI · MINDEN JOG FENNTARTVA</span>
+    <span>© 2026 Lazuli Café · MINDEN JOG FENNTARTVA</span>
     <span class="footer__legal">
-      <a href="assets/adatkezeles.pdf" target="_blank" rel="noopener">ADATVÉDELEM</a> ·
-      <a href="assets/aszf.pdf" target="_blank" rel="noopener">ÁSZF</a> ·
-      <a href="#">COOKIE-K</a>
+      <a href="dokumentum.html?doc=adatkezeles" target="_blank" rel="noopener">ADATVÉDELEM</a> ·
+      <a href="dokumentum.html?doc=aszf" target="_blank" rel="noopener">ÁSZF</a>
     </span>
   </div>
 </footer>
 
+<!-- Lenis smooth scroll -->
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+  (function(){
+    if (typeof Lenis === 'undefined') return;
+    var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    // in-page anchor links -> smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href');
+        if (id.length > 1){
+          var el = document.querySelector(id);
+          if (el){ e.preventDefault(); lenis.scrollTo(el, { offset: -90 }); }
+        }
+      });
+    });
+  })();
+</script>
 <script>
   (function(){
     var nav = document.getElementById('nav');

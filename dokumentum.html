@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentum — Lazuli Café</title>
+<link rel="icon" type="image/png" href="assets/fav.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;700&family=Geist+Mono:wght@400;500&family=Funnel+Display:wght@400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hero" style="min-height:0;background:var(--brown);">
+  <nav class="nav" id="nav">
+    <a class="nav__logo" href="index.html"><img src="assets/logo.svg" alt="Lazuli Café"></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__menu">
+      <li><a href="index.html">főoldal</a></li>
+      <li><a href="dokumentum.html?doc=etlap">étlap-itallap</a></li>
+      <li><a href="index.html#vilag">Lazuli</a></li>
+      <li><a href="index.html#helyszin">Kapcsolat</a></li>
+    </ul>
+    <a class="btn btn--primary nav__cta" href="tel:+36303767800">asztalfoglalás <span class="arrow" aria-hidden="true"></span></a>
+  </nav>
+</header>
+
+<!-- ============ PDF ============ -->
+<main class="doc">
+  <div class="doc__inner">
+    <p class="doc__sub" id="docSub">Dokumentum</p>
+    <h1 class="doc__title" id="docTitle">Dokumentum</h1>
+    <div id="adobe-dc-view" style="width:100%;"></div>
+    <p class="doc__fallback">Ha a megtekintő nem töltődik be, <a id="docDownload" href="#" target="_blank" rel="noopener">nyisd meg a PDF-et közvetlenül</a>.</p>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__cols">
+    <div class="footer__brand">
+      <a href="index.html"><img class="footer__logo" src="assets/logo.svg" alt="Lazuli Café"></a>
+      <div class="footer__badges">
+        <span class="badge badge--gold">Apartment</span>
+        <span class="badge badge--teal">MED</span>
+      </div>
+    </div>
+    <nav class="footer__col">
+      <p class="footer__title">FELFEDEZÉS</p>
+      <a href="https://apartman.lazuli.hu/">Apartman</a>
+      <a href="index.html">Longevity</a>
+      <a href="index.html#helyszin">Helyszín</a>
+    </nav>
+    <div class="footer__col">
+      <p class="footer__title">KAPCSOLAT</p>
+      <a href="index.html#helyszin">9437 Hegykő, [utca]</a>
+      <a href="mailto:hello@lazuli.hu">hello@lazuli.hu</a>
+      <a href="tel:+3699000000">+36 99 000 000</a>
+    </div>
+    <div class="footer__col">
+      <p class="footer__title">KÖVESS</p>
+      <div class="footer__social">
+        <a href="#"><img src="assets/icon-instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icon-facebook.svg" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__divider"></div>
+  <div class="footer__routes">
+    <span class="footer__routes-label">Útvonaltervezés:</span>
+    <a href="#"><img src="assets/icon-applemaps.png" alt="Apple Maps"></a>
+    <a href="#"><img src="assets/icon-waze.png" alt="Waze"></a>
+    <a href="#"><img src="assets/icon-googlemaps.png" alt="Google Maps"></a>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Lazuli Café · MINDEN JOG FENNTARTVA</span>
+    <span class="footer__legal">
+      <a href="dokumentum.html?doc=adatkezeles" target="_blank" rel="noopener">ADATVÉDELEM</a> ·
+      <a href="dokumentum.html?doc=aszf" target="_blank" rel="noopener">ÁSZF</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // hamburger menu
+  (function(){
+    var nav = document.getElementById('nav');
+    var btn = document.getElementById('navToggle');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('nav--open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  // melyik dokumentum?
+  var DOCS = {
+    etlap:       { url: 'assets/etlap-itallap.pdf', name: 'Étlap-itallap',                sub: 'A KÍNÁLATBÓL' },
+    adatkezeles: { url: 'assets/adatkezeles.pdf',   name: 'Adatkezelési tájékoztató',     sub: 'JOGI INFORMÁCIÓK' },
+    aszf:        { url: 'assets/aszf.pdf',          name: 'Általános Szerződési Feltételek', sub: 'JOGI INFORMÁCIÓK' }
+  };
+  var key = (new URLSearchParams(location.search).get('doc') || 'etlap').toLowerCase();
+  var DOC = DOCS[key] || DOCS.etlap;
+  var pdfURL = new URL(DOC.url, location.href).href;
+
+  document.title = DOC.name + ' — Lazuli Café';
+  document.getElementById('docTitle').textContent = DOC.name;
+  document.getElementById('docSub').textContent = DOC.sub;
+  document.getElementById('docDownload').setAttribute('href', pdfURL);
+</script>
+
+<!-- Adobe PDF Embed -->
+<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    var adobeDCView = new AdobeDC.View({ clientId: "6ddde5ab3f7d4e5581de9cc9f273c25e", divId: "adobe-dc-view" });
+    adobeDCView.previewFile({
+      content:  { location: { url: pdfURL } },
+      metaData: { fileName: DOC.name + ".pdf" }
+    }, { embedMode: "IN_LINE" });
+  });
+</script>
+</body>
+</html>
