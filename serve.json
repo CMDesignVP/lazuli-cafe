@@ -1,4 +1,9 @@
 {
-  "cleanUrls": false,
-  "trailingSlash": false
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/etlap", "destination": "/dokumentum.html" },
+    { "source": "/aszf", "destination": "/dokumentum.html" },
+    { "source": "/adatkezeles", "destination": "/dokumentum.html" }
+  ]
 }

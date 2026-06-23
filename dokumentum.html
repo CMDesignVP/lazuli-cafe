@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/">
 <title>Dokumentum — Lazuli Café</title>
 <link rel="icon" type="image/png" href="assets/fav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,15 +16,15 @@
 <!-- ============ HEADER ============ -->
 <header class="hero" style="min-height:0;background:var(--brown);">
   <nav class="nav" id="nav">
-    <a class="nav__logo" href="index.html"><img src="assets/logo.svg" alt="Lazuli Café"></a>
+    <a class="nav__logo" href="/"><img src="assets/logo.svg" alt="Lazuli Café"></a>
     <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__menu">
-      <li><a href="index.html">főoldal</a></li>
-      <li><a href="dokumentum.html?doc=etlap">étlap-itallap</a></li>
-      <li><a href="index.html#vilag">Lazuli</a></li>
-      <li><a href="index.html#helyszin">Kapcsolat</a></li>
+      <li><a href="/">főoldal</a></li>
+      <li><a href="/etlap">étlap-itallap</a></li>
+      <li><a href="/#vilag">Lazuli</a></li>
+      <li><a href="/#helyszin">Kapcsolat</a></li>
     </ul>
     <a class="btn btn--primary nav__cta" href="tel:+36303767800">asztalfoglalás <span class="arrow" aria-hidden="true"></span></a>
   </nav>
@@ -43,7 +44,7 @@
 <footer class="footer">
   <div class="footer__cols">
     <div class="footer__brand">
-      <a href="index.html"><img class="footer__logo" src="assets/logo.svg" alt="Lazuli Café"></a>
+      <a href="/"><img class="footer__logo" src="assets/logo.svg" alt="Lazuli Café"></a>
       <div class="footer__badges">
         <span class="badge badge--gold">Apartment</span>
         <span class="badge badge--teal">MED</span>
@@ -52,12 +53,12 @@
     <nav class="footer__col">
       <p class="footer__title">FELFEDEZÉS</p>
       <a href="https://apartman.lazuli.hu/">Apartman</a>
-      <a href="index.html">Longevity</a>
-      <a href="index.html#helyszin">Helyszín</a>
+      <a href="/">Longevity</a>
+      <a href="/#helyszin">Helyszín</a>
     </nav>
     <div class="footer__col">
       <p class="footer__title">KAPCSOLAT</p>
-      <a href="index.html#helyszin">9437 Hegykő, [utca]</a>
+      <a href="/#helyszin">9437 Hegykő, [utca]</a>
       <a href="mailto:hello@lazuli.hu">hello@lazuli.hu</a>
       <a href="tel:+3699000000">+36 99 000 000</a>
     </div>
@@ -79,8 +80,8 @@
   <div class="footer__bottom">
     <span>© 2026 Lazuli Café · MINDEN JOG FENNTARTVA</span>
     <span class="footer__legal">
-      <a href="dokumentum.html?doc=adatkezeles" target="_blank" rel="noopener">ADATVÉDELEM</a> ·
-      <a href="dokumentum.html?doc=aszf" target="_blank" rel="noopener">ÁSZF</a>
+      <a href="/adatkezeles" target="_blank" rel="noopener">ADATVÉDELEM</a> ·
+      <a href="/aszf" target="_blank" rel="noopener">ÁSZF</a>
     </span>
   </div>
 </footer>
@@ -103,7 +104,9 @@
     adatkezeles: { url: 'assets/adatkezeles.pdf',   name: 'Adatkezelési tájékoztató',     sub: 'JOGI INFORMÁCIÓK' },
     aszf:        { url: 'assets/aszf.pdf',          name: 'Általános Szerződési Feltételek', sub: 'JOGI INFORMÁCIÓK' }
   };
-  var key = (new URLSearchParams(location.search).get('doc') || 'etlap').toLowerCase();
+  // dokumentum felismerése az útvonalból (/etlap, /aszf, /adatkezeles), majd ?doc= fallback
+  var seg = location.pathname.replace(/\/+$/,'').split('/').pop().toLowerCase();
+  var key = DOCS[seg] ? seg : (new URLSearchParams(location.search).get('doc') || 'etlap').toLowerCase();
   var DOC = DOCS[key] || DOCS.etlap;
   var pdfURL = new URL(DOC.url, location.href).href;
 
