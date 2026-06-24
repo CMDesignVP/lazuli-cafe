@@ -1,9 +1,14 @@
 RewriteEngine On
 
-# --- Dokumentum útvonalak (a JS az útvonalból ismeri fel, melyik PDF) ---
+# --- Dokumentum útvonalak (a JS az útvonalból ismeri fel, melyik PDF + nyelv) ---
 RewriteRule ^etlap/?$        dokumentum.html [L]
+RewriteRule ^menu/?$         dokumentum.html [L]
 RewriteRule ^aszf/?$         dokumentum.html [L]
+RewriteRule ^terms/?$        dokumentum.html [L]
+RewriteRule ^agb/?$          dokumentum.html [L]
 RewriteRule ^adatkezeles/?$  dokumentum.html [L]
+RewriteRule ^privacy/?$      dokumentum.html [L]
+RewriteRule ^datenschutz/?$  dokumentum.html [L]
 
 # --- /index(.html) -> / ---
 RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]

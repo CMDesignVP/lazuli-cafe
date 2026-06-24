@@ -3,7 +3,12 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/etlap", "destination": "/dokumentum.html" },
+    { "source": "/menu", "destination": "/dokumentum.html" },
     { "source": "/aszf", "destination": "/dokumentum.html" },
-    { "source": "/adatkezeles", "destination": "/dokumentum.html" }
+    { "source": "/terms", "destination": "/dokumentum.html" },
+    { "source": "/agb", "destination": "/dokumentum.html" },
+    { "source": "/adatkezeles", "destination": "/dokumentum.html" },
+    { "source": "/privacy", "destination": "/dokumentum.html" },
+    { "source": "/datenschutz", "destination": "/dokumentum.html" }
   ]
 }

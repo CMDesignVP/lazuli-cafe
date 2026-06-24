@@ -263,18 +263,30 @@
 
   var LANGS = ["hu", "en", "de"];
 
-  function applyLang(lang) {
+  // Nyelvfüggő dokumentum-URL-ek (a [data-doc] linkek ide mutatnak)
+  var DOC_URLS = {
+    etlap:       { hu: "/etlap",       en: "/menu",        de: "/menu" },
+    aszf:        { hu: "/aszf",        en: "/terms",       de: "/agb" },
+    adatkezeles: { hu: "/adatkezeles", en: "/privacy",     de: "/datenschutz" }
+  };
+
+  function applyLang(lang, persist) {
     if (!T[lang]) lang = "hu";
     var dict = T[lang];
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.innerHTML = dict[key];
     });
+    // dokumentum-linkek átirányítása a nyelvi útvonalra
+    document.querySelectorAll("[data-doc]").forEach(function (el) {
+      var d = el.getAttribute("data-doc");
+      if (DOC_URLS[d] && DOC_URLS[d][lang]) el.setAttribute("href", DOC_URLS[d][lang]);
+    });
     document.documentElement.setAttribute("lang", lang);
     document.querySelectorAll(".lang-flag").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-lang") === lang);
     });
-    try { localStorage.setItem("lazuli-lang", lang); } catch (e) {}
+    if (persist !== false) { try { localStorage.setItem("lazuli-lang", lang); } catch (e) {} }
   }
 
   function init() {
@@ -286,6 +298,9 @@
       b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
     });
   }
+
+  // a dokumentum-oldal ezzel kényszeríti az URL szerinti nyelvet (persist nélkül)
+  window.LazuliI18n = { applyLang: applyLang, langs: LANGS };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

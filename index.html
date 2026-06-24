@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lazuli Café — Fertő-táji pékség és kávézó</title>
-<link rel="icon" type="image/png" href="assets/fav.png">
+<link rel="icon" type="image/png" href="assets/icons/fav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;700&family=Geist+Mono:wght@400;500&family=Funnel+Display:wght@400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <header class="hero">
   <nav class="nav" id="nav">
     <div class="nav__left">
-      <a class="nav__logo" href="/"><img src="assets/logo.svg" alt="Lazuli Café"></a>
+      <a class="nav__logo" href="/"><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
       <div class="nav__lang" role="group" aria-label="Nyelvválasztó">
         <button class="lang-flag" data-lang="hu" aria-label="Magyar" title="Magyar">
           <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height=".667" fill="#CD2A3E"/><rect y="1.333" width="3" height=".667" fill="#436F4D"/></svg>
@@ -34,7 +34,7 @@
     </button>
     <ul class="nav__menu">
       <li><a href="/" data-i18n="nav.home">főoldal</a></li>
-      <li><a href="/etlap" data-i18n="nav.menu">étlap-itallap</a></li>
+      <li><a href="/etlap" data-doc="etlap" data-i18n="nav.menu">étlap-itallap</a></li>
       <li><a href="/#vilag" data-i18n="nav.lazuli">Lazuli</a></li>
       <li><a href="/#helyszin" data-i18n="nav.contact">Kapcsolat</a></li>
     </ul>
@@ -45,7 +45,7 @@
     <h1 class="hero__display" data-i18n="hero.h1">Nem csak<br><span class="pink">kávé.</span></h1>
     <p class="hero__subhead" data-i18n="hero.sub">Minőségi ízek, nyugodt pillanatok és egy találkozóhely Hegykő szívében.</p>
     <div class="hero__ctas">
-      <a class="btn btn--primary" href="/etlap"><span data-i18n="btn.menu">étlap-itallap</span> <span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--primary" href="/etlap" data-doc="etlap"><span data-i18n="btn.menu">étlap-itallap</span> <span class="arrow" aria-hidden="true"></span></a>
       <a class="btn btn--ghost" href="tel:+36303767800" data-i18n="btn.call">Hívj minket&nbsp;&nbsp;→</a>
     </div>
   </div>
@@ -55,10 +55,10 @@
 <section class="intro">
   <div class="intro__inner">
     <div class="intro__photo">
-      <img src="assets/cafe.webp" alt="Lazuli Café belső tér">
+      <img src="assets/img/cafe.webp" alt="Lazuli Café belső tér">
     </div>
     <div class="intro__text">
-      <img class="intro__watermark" src="assets/intro-watermark.svg" alt="" aria-hidden="true">
+      <img class="intro__watermark" src="assets/icons/intro-watermark.svg" alt="" aria-hidden="true">
       <div class="intro__head">
         <p class="eyebrow" data-i18n="intro.eyebrow">Minőség minden részletben</p>
         <h2 class="h2" data-i18n="intro.h2">Minőségi ízek,<br><span class="pink">közös pillanatok.</span></h2>
@@ -92,7 +92,7 @@
         <li data-i18n="card1.li3">tortarendelés</li>
         <li data-i18n="card1.li4">előrendelési lehetőség</li>
       </ul>
-      <div class="card__img"><img src="assets/kinalat-c1.jpg" alt="Coffee to go és péksütemény"></div>
+      <div class="card__img"><img src="assets/img/kinalat-c1.jpg" alt="Coffee to go és péksütemény"></div>
     </article>
     <article class="card card--dark">
       <p class="card__time" data-i18n="card2.eyebrow">Helyben a legjobb</p>
@@ -104,7 +104,7 @@
         <li data-i18n="card2.li3">ingyenes parkolás</li>
         <li data-i18n="card2.li4">figyelmes kiszolgálás</li>
       </ul>
-      <div class="card__img"><img src="assets/kinalat-c2.jpg" alt="Sütemény és kávé a teraszon"></div>
+      <div class="card__img"><img src="assets/img/kinalat-c2.jpg" alt="Sütemény és kávé a teraszon"></div>
     </article>
   </div>
 </section>
@@ -113,8 +113,8 @@
 <section class="menu" id="kinalat">
   <div class="menu__collage">
     <span class="menu__watermark" aria-hidden="true">café</span>
-    <img class="menu__main" src="assets/menu-main.jpg" alt="A Lazuli Café kínálata">
-    <img class="menu__overlay" src="assets/menu-overlay.jpg" alt="Friss pékáru">
+    <img class="menu__main" src="assets/img/menu-main.jpg" alt="A Lazuli Café kínálata">
+    <img class="menu__overlay" src="assets/img/menu-overlay.jpg" alt="Friss pékáru">
   </div>
   <div class="menu__text">
     <p class="eyebrow" data-i18n="menu.eyebrow">A kínálatból</p>
@@ -173,8 +173,8 @@
     <h2 class="social__head" data-i18n="soc.h2">Pillanatok a <span class="pink">Lazuli café-ból.</span></h2>
   </div>
   <div class="social__right">
-    <a class="social__link" href="#"><img src="assets/icon-instagram.svg" alt=""><span data-i18n="soc.ig">Instagram&nbsp;&nbsp;→</span></a>
-    <a class="social__link" href="#"><img src="assets/icon-facebook.svg" alt=""><span data-i18n="soc.fb">Facebook&nbsp;&nbsp;→</span></a>
+    <a class="social__link" href="#"><img src="assets/icons/icon-instagram.svg" alt=""><span data-i18n="soc.ig">Instagram&nbsp;&nbsp;→</span></a>
+    <a class="social__link" href="#"><img src="assets/icons/icon-facebook.svg" alt=""><span data-i18n="soc.fb">Facebook&nbsp;&nbsp;→</span></a>
   </div>
 </section>
 
@@ -186,7 +186,7 @@
   </div>
   <div class="world__cards">
     <a class="wcard wcard--apartment" href="https://apartman.lazuli.hu/">
-      <img src="assets/social-3.jpg" alt="Lazuli Apartment">
+      <img src="assets/img/social-3.jpg" alt="Lazuli Apartment">
       <div class="wcard__body">
         <span class="wcard__line gold" aria-hidden="true"></span>
         <h3 data-i18n="world.apt.title">Lazuli Apartment</h3>
@@ -195,7 +195,7 @@
       <span class="wcard__go wcard__go--gold" aria-hidden="true"></span>
     </a>
     <a class="wcard wcard--med" href="#">
-      <img src="assets/social-2.jpg" alt="Lazuli Med">
+      <img src="assets/img/social-2.jpg" alt="Lazuli Med">
       <div class="wcard__body">
         <span class="wcard__line teal" aria-hidden="true"></span>
         <h3 data-i18n="world.med.title">Lazuli Med</h3>
@@ -210,7 +210,7 @@
 <footer class="footer">
   <div class="footer__cols">
     <div class="footer__brand">
-      <a href="/"><img class="footer__logo" src="assets/logo.svg" alt="Lazuli Café"></a>
+      <a href="/"><img class="footer__logo" src="assets/icons/logo.svg" alt="Lazuli Café"></a>
       <div class="footer__badges">
         <span class="badge badge--gold">Apartment</span>
         <span class="badge badge--teal">MED</span>
@@ -231,23 +231,23 @@
     <div class="footer__col">
       <p class="footer__title" data-i18n="foot.follow">KÖVESS</p>
       <div class="footer__social">
-        <a href="#"><img src="assets/icon-instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icon-facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/icon-instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/icons/icon-facebook.svg" alt="Facebook"></a>
       </div>
     </div>
   </div>
   <div class="footer__divider"></div>
   <div class="footer__routes">
     <span class="footer__routes-label" data-i18n="foot.routes">Útvonaltervezés:</span>
-    <a href="https://maps.apple.com/?address=9437%20Hegyk%C5%91,%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icon-applemaps.png" alt="Apple Maps"></a>
-    <a href="https://waze.com/ul?q=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icon-waze.png" alt="Waze"></a>
-    <a href="https://www.google.com/maps/search/?api=1&query=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icon-googlemaps.png" alt="Google Maps"></a>
+    <a href="https://maps.apple.com/?address=9437%20Hegyk%C5%91,%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-applemaps.png" alt="Apple Maps"></a>
+    <a href="https://waze.com/ul?q=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-waze.png" alt="Waze"></a>
+    <a href="https://www.google.com/maps/search/?api=1&query=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-googlemaps.png" alt="Google Maps"></a>
   </div>
   <div class="footer__bottom">
     <span data-i18n="foot.copyright">© 2026 Lazuli Café · MINDEN JOG FENNTARTVA</span>
     <span class="footer__legal">
-      <a href="/adatkezeles" target="_blank" rel="noopener" data-i18n="foot.privacy">ADATVÉDELEM</a> ·
-      <a href="/aszf" target="_blank" rel="noopener" data-i18n="foot.terms">ÁSZF</a>
+      <a href="/adatkezeles" target="_blank" rel="noopener" data-doc="adatkezeles" data-i18n="foot.privacy">ADATVÉDELEM</a> ·
+      <a href="/aszf" target="_blank" rel="noopener" data-doc="aszf" data-i18n="foot.terms">ÁSZF</a>
     </span>
   </div>
 </footer>
