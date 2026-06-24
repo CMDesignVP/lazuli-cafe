@@ -3,3 +3,6 @@
 
 # macOS
 .DS_Store
+
+# Forrásanyagok (PDF, nyers képek) — NEM kerül a repóba
+_forras/
