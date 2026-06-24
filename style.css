@@ -239,6 +239,7 @@ ul{list-style:none;}
   padding:56px;
   padding-bottom:0;
   overflow:hidden;
+  align-content: flex-end;
 }
 .card--light{background:var(--cream);}
 .card--dark{background:var(--brown);}
