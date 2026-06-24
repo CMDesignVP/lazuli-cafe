@@ -2,6 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/en", "destination": "/index.html" },
+    { "source": "/de", "destination": "/index.html" },
     { "source": "/etlap", "destination": "/dokumentum.html" },
     { "source": "/menu", "destination": "/dokumentum.html" },
     { "source": "/aszf", "destination": "/dokumentum.html" },

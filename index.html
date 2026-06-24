@@ -16,7 +16,7 @@
 <header class="hero">
   <nav class="nav" id="nav">
     <div class="nav__left">
-      <a class="nav__logo" href="/"><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
+      <a class="nav__logo" href="/" data-home><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
       <div class="nav__lang" role="group" aria-label="Nyelvválasztó">
         <button class="lang-flag" data-lang="hu" aria-label="Magyar" title="Magyar">
           <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height=".667" fill="#CD2A3E"/><rect y="1.333" width="3" height=".667" fill="#436F4D"/></svg>
@@ -33,10 +33,10 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__menu">
-      <li><a href="/" data-i18n="nav.home">főoldal</a></li>
+      <li><a href="/" data-home data-i18n="nav.home">főoldal</a></li>
       <li><a href="/etlap" data-doc="etlap" data-i18n="nav.menu">étlap-itallap</a></li>
-      <li><a href="/#vilag" data-i18n="nav.lazuli">Lazuli</a></li>
-      <li><a href="/#helyszin" data-i18n="nav.contact">Kapcsolat</a></li>
+      <li><a href="#vilag" data-anchor="vilag" data-i18n="nav.lazuli">Lazuli</a></li>
+      <li><a href="#helyszin" data-anchor="helyszin" data-i18n="nav.contact">Kapcsolat</a></li>
     </ul>
     <a class="btn btn--primary nav__cta" href="tel:+36303767800"><span data-i18n="btn.book">asztalfoglalás</span> <span class="arrow" aria-hidden="true"></span></a>
   </nav>
@@ -210,7 +210,7 @@
 <footer class="footer">
   <div class="footer__cols">
     <div class="footer__brand">
-      <a href="/"><img class="footer__logo" src="assets/icons/logo.svg" alt="Lazuli Café"></a>
+      <a href="/" data-home><img class="footer__logo" src="assets/icons/logo.svg" alt="Lazuli Café"></a>
       <div class="footer__badges">
         <span class="badge badge--gold">Apartment</span>
         <span class="badge badge--teal">MED</span>
@@ -220,11 +220,11 @@
       <p class="footer__title" data-i18n="foot.explore">FELFEDEZÉS</p>
       <a href="https://apartman.lazuli.hu/" data-i18n="foot.l.apartman">Apartman</a>
       <a href="#" data-i18n="foot.l.longevity">Longevity</a>
-      <a href="/#helyszin" data-i18n="foot.l.location">Helyszín</a>
+      <a href="#helyszin" data-anchor="helyszin" data-i18n="foot.l.location">Helyszín</a>
     </nav>
     <div class="footer__col">
       <p class="footer__title" data-i18n="foot.contact">KAPCSOLAT</p>
-      <a href="/#helyszin" data-i18n="foot.addr">9437 Hegykő, Alsószer utca 18.</a>
+      <a href="#helyszin" data-anchor="helyszin" data-i18n="foot.addr">9437 Hegykő, Alsószer utca 18.</a>
       <a href="mailto:hegyko@lazuli.hu" data-i18n="foot.email">hegyko@lazuli.hu</a>
       <a href="tel:+36303767800" data-i18n="foot.phone">+36 (30) 376 7800</a>
     </div>

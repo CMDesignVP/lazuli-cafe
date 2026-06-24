@@ -270,6 +270,15 @@
     adatkezeles: { hu: "/adatkezeles", en: "/privacy",     de: "/datenschutz" }
   };
 
+  // nyelvi gyökér: HU = /, EN = /en, DE = /de
+  function langPath(lang) { return lang === "hu" ? "/" : "/" + lang; }
+  function langFromPath() {
+    var p = location.pathname.replace(/\/+$/, "");
+    if (p === "/en") return "en";
+    if (p === "/de") return "de";
+    return "hu";
+  }
+
   function applyLang(lang, persist) {
     if (!T[lang]) lang = "hu";
     var dict = T[lang];
@@ -277,10 +286,19 @@
       var key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.innerHTML = dict[key];
     });
-    // dokumentum-linkek átirányítása a nyelvi útvonalra
+    // dokumentum-linkek a nyelvi útvonalra (/etlap·/menu, /aszf·/terms·/agb, ...)
     document.querySelectorAll("[data-doc]").forEach(function (el) {
       var d = el.getAttribute("data-doc");
       if (DOC_URLS[d] && DOC_URLS[d][lang]) el.setAttribute("href", DOC_URLS[d][lang]);
+    });
+    // főoldal-linkek a nyelvi gyökérre
+    document.querySelectorAll("[data-home]").forEach(function (el) {
+      el.setAttribute("href", langPath(lang));
+    });
+    // szekció-horgonyok: ezen az oldalon #anchor, máshol nyelvi gyökér + #anchor
+    document.querySelectorAll("[data-anchor]").forEach(function (el) {
+      var a = el.getAttribute("data-anchor");
+      el.setAttribute("href", document.getElementById(a) ? "#" + a : langPath(lang) + "#" + a);
     });
     document.documentElement.setAttribute("lang", lang);
     document.querySelectorAll(".lang-flag").forEach(function (b) {
@@ -290,17 +308,19 @@
   }
 
   function init() {
-    var saved = "hu";
-    try { saved = localStorage.getItem("lazuli-lang") || "hu"; } catch (e) {}
-    if (LANGS.indexOf(saved) < 0) saved = "hu";
-    applyLang(saved);
+    applyLang(langFromPath());
     document.querySelectorAll(".lang-flag").forEach(function (b) {
-      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+      b.addEventListener("click", function () {
+        var lang = b.getAttribute("data-lang");
+        if (window.history && history.pushState) { history.pushState({}, "", langPath(lang)); }
+        applyLang(lang);
+      });
     });
+    window.addEventListener("popstate", function () { applyLang(langFromPath()); });
   }
 
   // a dokumentum-oldal ezzel kényszeríti az URL szerinti nyelvet (persist nélkül)
-  window.LazuliI18n = { applyLang: applyLang, langs: LANGS };
+  window.LazuliI18n = { applyLang: applyLang, langs: LANGS, langPath: langPath };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

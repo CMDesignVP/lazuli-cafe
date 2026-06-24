@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# --- Főoldal nyelvi változatai (ugyanaz az index.html, a nyelvet az URL adja) ---
+RewriteRule ^en/?$           index.html [L]
+RewriteRule ^de/?$           index.html [L]
+
 # --- Dokumentum útvonalak (a JS az útvonalból ismeri fel, melyik PDF + nyelv) ---
 RewriteRule ^etlap/?$        dokumentum.html [L]
 RewriteRule ^menu/?$         dokumentum.html [L]
