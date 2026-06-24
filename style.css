@@ -24,7 +24,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:clip;}
 /* Lenis smooth scroll */
 html.lenis,html.lenis body{height:auto;}
 .lenis.lenis-smooth{scroll-behavior:auto !important;}
@@ -37,7 +37,7 @@ body{
   background:var(--cream);
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 img{display:block;max-width:100%;}
 a{text-decoration:none;color:inherit;}
@@ -466,7 +466,7 @@ ul{list-style:none;}
 /* =================================================================
    OFF-CANVAS MOBIL MENÜ (jobbról beúszó)
    ================================================================= */
-.mobile-menu{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none;}
+.mobile-menu{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none;overflow:hidden;}
 .mobile-menu.is-open{visibility:visible;pointer-events:auto;}
 .mobile-menu__backdrop{
   position:absolute;inset:0;background:rgba(26,16,8,.55);
