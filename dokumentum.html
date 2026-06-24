@@ -32,6 +32,26 @@
   </nav>
 </header>
 
+<!-- ============ MOBIL OFF-CANVAS MENÜ ============ -->
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Menü">
+  <div class="mobile-menu__backdrop" data-menu-close></div>
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true">
+    <div class="mobile-menu__header">
+      <a class="mobile-menu__logo" href="/" data-home data-menu-close aria-label="Lazuli Café — főoldal"><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
+      <button type="button" class="mobile-menu__close" data-menu-close aria-label="Menü bezárása">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__links">
+      <li><a href="/" data-home data-menu-close data-i18n="nav.home">főoldal</a></li>
+      <li><a href="/etlap" data-doc="etlap" data-menu-close data-i18n="nav.menu">étlap-itallap</a></li>
+      <li><a href="/#vilag" data-anchor="vilag" data-menu-close data-i18n="nav.lazuli">Lazuli</a></li>
+      <li><a href="/#helyszin" data-anchor="helyszin" data-menu-close data-i18n="nav.contact">Kapcsolat</a></li>
+    </ul>
+    <a class="btn btn--primary mobile-menu__cta" href="tel:+36303767800" data-menu-close><span data-i18n="btn.book">asztalfoglalás</span> <span class="arrow" aria-hidden="true"></span></a>
+  </div>
+</aside>
+
 <!-- ============ PDF ============ -->
 <main class="doc">
   <div class="doc__inner">
@@ -55,7 +75,7 @@
     <nav class="footer__col">
       <p class="footer__title" data-i18n="foot.explore">FELFEDEZÉS</p>
       <a href="https://apartman.lazuli.hu/" data-i18n="foot.l.apartman">Apartman</a>
-      <a href="/" data-home data-i18n="foot.l.longevity">Longevity</a>
+      <a href="/" data-home data-i18n="foot.l.longevity">Med</a>
       <a href="/#helyszin" data-anchor="helyszin" data-i18n="foot.l.location">Helyszín</a>
     </nav>
     <div class="footer__col">
@@ -85,14 +105,17 @@
 <!-- ============ SCRIPTS ============ -->
 <script src="i18n.js"></script>
 <script>
-  // hamburger
+  // off-canvas mobil menü
   (function(){
-    var nav = document.getElementById('nav');
     var btn = document.getElementById('navToggle');
-    btn.addEventListener('click', function(){
-      var open = nav.classList.toggle('nav--open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function openMenu(){ menu.classList.add('is-open'); menu.setAttribute('aria-hidden','false'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('menu-open'); }
+    function closeMenu(){ menu.classList.remove('is-open'); menu.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); }
+    btn.addEventListener('click', openMenu);
+    menu.querySelectorAll('[data-menu-close]').forEach(function(el){ el.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(); });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu(); });
   })();
 
   // melyik dokumentum? (az URL útvonalából)

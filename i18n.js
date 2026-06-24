@@ -77,7 +77,7 @@
 
       "foot.explore": "FELFEDEZÉS",
       "foot.l.apartman": "Apartman",
-      "foot.l.longevity": "Longevity",
+      "foot.l.longevity": "Med",
       "foot.l.location": "Helyszín",
       "foot.contact": "KAPCSOLAT",
       "foot.addr": "9437 Hegykő, Alsószer utca 18.",
@@ -162,7 +162,7 @@
 
       "foot.explore": "EXPLORE",
       "foot.l.apartman": "Apartment",
-      "foot.l.longevity": "Longevity",
+      "foot.l.longevity": "Med",
       "foot.l.location": "Location",
       "foot.contact": "CONTACT",
       "foot.addr": "9437 Hegykő, Alsószer utca 18.",
@@ -247,7 +247,7 @@
 
       "foot.explore": "ENTDECKEN",
       "foot.l.apartman": "Apartment",
-      "foot.l.longevity": "Longevity",
+      "foot.l.longevity": "Med",
       "foot.l.location": "Standort",
       "foot.contact": "KONTAKT",
       "foot.addr": "9437 Hegykő, Alsószer utca 18.",
