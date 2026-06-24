@@ -502,7 +502,7 @@ ul{list-style:none;}
   .hero__subhead{font-size:18px;}
 
   .intro__inner{grid-template-columns:1fr;gap:0;padding-bottom:64px;}
-  .intro__photo{margin-top:-80px;}
+  .intro__photo{margin-top:-40px;}
   .intro__text{padding-top:40px;}
   .intro__watermark{display:none;}
 
