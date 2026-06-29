@@ -563,6 +563,7 @@ body.menu-open{overflow:hidden;}
 
   .loc{flex-direction:column;padding:80px 40px;gap:48px;}
   .loc__left{width:100%;}
+  .loc__map{width:100%;}
   .loc__map img,.loc__map iframe{height:420px;}
 
   .social{flex-direction:column;gap:32px;text-align:center;padding:56px 40px;}
