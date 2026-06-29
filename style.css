@@ -342,11 +342,11 @@ ul{list-style:none;}
    ================================================================= */
 .loc{
   background:var(--cream2);
-  display:flex;align-items:flex-start;gap:106px;
-  padding:140px 120px 140px 213px;
+  display:flex;align-items:flex-start;gap:clamp(40px,6vw,106px);
+  padding:140px clamp(40px,8vw,120px) 140px clamp(40px,11vw,213px);
   width:100%;
 }
-.loc__left{width:616px;flex:none;display:flex;flex-direction:column;}
+.loc__left{flex:0 1 616px;min-width:260px;display:flex;flex-direction:column;}
 .loc__left .h2{margin-top:24px;}
 .loc__body{font-size:17px;line-height:28px;margin-top:28px;max-width:480px;}
 .hours{margin-top:28px;border-top:1px solid rgba(241,107,130,.3);}
@@ -364,8 +364,8 @@ ul{list-style:none;}
 .cKey{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);}
 .cVal{font-size:22px;line-height:27px;color:var(--ink);margin-top:4px;}
 .loc__left .btn--primary{align-self:flex-start;margin-top:28px;}
-.loc__map{flex:1;}
-.loc__map img,.loc__map iframe{width:100%;height:815px;object-fit:cover;border:0;border-radius:10px;display:block;}
+.loc__map{flex:1;min-width:280px;}
+.loc__map img,.loc__map iframe{width:100%;height:clamp(420px,50vw,815px);object-fit:cover;border:0;border-radius:10px;display:block;}
 
 /* =================================================================
    SOCIAL
@@ -425,7 +425,7 @@ ul{list-style:none;}
    FOOTER
    ================================================================= */
 .footer{background:var(--footer);color:#fff;padding:80px 140px 40px;}
-.footer__cols{display:grid;grid-template-columns:350px 350px 350px 350px;gap:80px;justify-content:space-between;}
+.footer__cols{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,80px);}
 .footer__brand{display:flex;flex-direction:column;gap:16px;}
 .footer__logo{height:85px;width:auto;}
 .footer__badges{display:flex;gap:16px;}
@@ -519,9 +519,9 @@ body.menu-open{overflow:hidden;}
 
 /* --- Hamburger nav kicsit korábban, hogy ne torlódjon a vízszintes menü --- */
 @media (max-width:1200px){
-  .hero{flex-direction:column;align-items:stretch;min-height:0;}
-  .nav{position:static;flex-wrap:wrap;gap:14px;height:auto;padding:18px 40px;justify-content:space-between;align-items:center;}
-  .nav--scrolled{height:auto;padding:18px 40px;}
+  .hero{flex-direction:column;align-items:stretch;}
+  .nav{position:fixed;flex-wrap:nowrap;height:72px;padding:0 40px;justify-content:space-between;align-items:center;}
+  .nav--scrolled{height:72px;padding:0 40px;}
   .nav__logo{width:auto;}
   .nav__lang{display:none;}            /* a zászlók a mobil drawer-be kerülnek */
   .nav__logo img,.nav--scrolled .nav__logo img{height:54px;}
@@ -536,13 +536,13 @@ body.menu-open{overflow:hidden;}
   .nav--open .nav__toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
   .nav--open .nav__toggle span:nth-child(2){opacity:0;}
   .nav--open .nav__toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
-  .hero__content{padding:48px 80px 80px;margin-top:0;max-width:none;}
+  .hero__content{padding:100px 80px 80px;margin-top:0;max-width:none;}
 }
 
 @media (max-width:900px){
   :root{--pad:40px;}
-  .nav{padding:18px 24px;}
-  .hero__content{padding:56px 40px 72px;}
+  .nav{padding:0 24px;}
+  .hero__content{padding:100px 40px 72px;}
   .hero__display{font-size:64px;line-height:1;}
   .hero__subhead{font-size:18px;}
 
