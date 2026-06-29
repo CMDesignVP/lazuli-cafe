@@ -127,6 +127,7 @@ ul{list-style:none;}
   height:84px;padding-top:16px;padding-bottom:16px;
 }
 .nav--scrolled .nav__logo img{height:52px;}
+.nav--dark{background:rgba(0,0,0,.80);}
 /* fix width so the centered menu doesn't shift when the logo shrinks on scroll */
 .nav__left{display:flex;align-items:center;gap:18px;flex:none;}
 .nav__logo{width:249px;flex:none;display:inline-flex;align-items:center;}

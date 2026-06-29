@@ -15,7 +15,7 @@
 
 <!-- ============ HEADER ============ -->
 <header class="hero" style="min-height:0;background:var(--brown);">
-  <nav class="nav nav--scrolled" id="nav">
+  <nav class="nav nav--dark" id="nav">
     <div class="nav__left">
       <a class="nav__logo" href="/" data-home><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
     </div>
@@ -116,6 +116,13 @@
     menu.querySelectorAll('[data-menu-close]').forEach(function(el){ el.addEventListener('click', closeMenu); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(); });
     window.addEventListener('resize', function(){ if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu(); });
+  })();
+
+  // sticky nav összemenés görgetésnél
+  (function(){
+    var nav = document.getElementById('nav');
+    function onScroll(){ nav.classList.toggle('nav--scrolled', window.scrollY > 80); }
+    window.addEventListener('scroll', onScroll, {passive:true});
   })();
 
   // melyik dokumentum? (az URL útvonalából)
