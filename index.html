@@ -4,13 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lazuli Café — Fertő-táji pékség és kávézó</title>
+<meta name="description" content="Pékség és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz. Nyitva minden nap 8:00–18:00.">
+
+<!-- nyelvi változatok (a tartalmat a JS fordítja az útvonal alapján) -->
+<link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/">
+<link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en">
+<link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de">
+<link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lazuli Café">
+<meta property="og:title" content="Lazuli Café — Fertő-táji pékség és kávézó">
+<meta property="og:description" content="Pékség és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz.">
+<meta property="og:url" content="https://cafe.lazuli.hu/">
+<meta property="og:image" content="https://cafe.lazuli.hu/assets/img/hero-bg.jpg">
+<meta property="og:locale" content="hu_HU">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/png" href="assets/icons/fav.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;700&family=Geist+Mono:wght@400;500&family=Funnel+Display:wght@400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero-bg.jpg" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="style.css">
+
+<!-- Strukturált adat a Google találatokhoz (kávézó: cím, nyitvatartás, elérhetőség) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Lazuli Café",
+  "image": "https://cafe.lazuli.hu/assets/img/hero-bg.jpg",
+  "url": "https://cafe.lazuli.hu/",
+  "telephone": "+36303767800",
+  "email": "hegyko@lazuli.hu",
+  "servesCuisine": ["Kávé", "Sütemény", "Reggeli"],
+  "priceRange": "$$",
+  "menu": "https://cafe.lazuli.hu/etlap",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Alsószer utca 18.",
+    "addressLocality": "Hegykő",
+    "postalCode": "9437",
+    "addressCountry": "HU"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "sameAs": [
+    "https://www.instagram.com/cafelazuli.hegyko/",
+    "https://www.facebook.com/cafelazuli.hegyko"
+  ]
+}
+</script>
 </head>
 <body>
+
+<a class="skip-link" href="#tartalom" data-i18n="nav.skip">Ugrás a tartalomra</a>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
@@ -29,7 +81,7 @@
         </button>
       </div>
     </div>
-    <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="nav">
+    <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__menu">
@@ -76,11 +128,13 @@
   </div>
 </aside>
 
+<main id="tartalom">
+
 <!-- ============ INTRO ============ -->
 <section class="intro">
   <div class="intro__inner">
     <div class="intro__photo">
-      <img src="assets/img/cafe.webp" alt="Lazuli Café belső tér">
+      <img src="assets/img/cafe.webp" alt="Lazuli Café belső tér" width="1050" height="1400">
     </div>
     <div class="intro__text">
       <img class="intro__watermark" src="assets/icons/intro-watermark.svg" alt="" aria-hidden="true">
@@ -117,7 +171,7 @@
         <li data-i18n="card1.li3">tortarendelés</li>
         <li data-i18n="card1.li4">előrendelési lehetőség</li>
       </ul>
-      <div class="card__img"><img src="assets/img/kinalat-c1.jpg" alt="Coffee to go és péksütemény"></div>
+      <div class="card__img"><img src="assets/img/kinalat-c1.jpg" alt="Coffee to go és péksütemény" width="1400" height="1060" loading="lazy"></div>
     </article>
     <article class="card card--dark">
       <p class="card__time" data-i18n="card2.eyebrow">Helyben a legjobb</p>
@@ -129,7 +183,7 @@
         <li data-i18n="card2.li3">ingyenes parkolás</li>
         <li data-i18n="card2.li4">figyelmes kiszolgálás</li>
       </ul>
-      <div class="card__img"><img src="assets/img/kinalat-c2.jpg" alt="Sütemény és kávé a teraszon"></div>
+      <div class="card__img"><img src="assets/img/kinalat-c2.jpg" alt="Sütemény és kávé a teraszon" width="1400" height="933" loading="lazy"></div>
     </article>
   </div>
 </section>
@@ -138,8 +192,8 @@
 <section class="menu" id="kinalat">
   <div class="menu__collage">
     <span class="menu__watermark" aria-hidden="true">café</span>
-    <img class="menu__main" src="assets/img/menu-main.jpg" alt="A Lazuli Café kínálata">
-    <img class="menu__overlay" src="assets/img/menu-overlay.jpg" alt="Friss pékáru">
+    <img class="menu__main" src="assets/img/menu-main.jpg" alt="A Lazuli Café kínálata" width="1400" height="933" loading="lazy">
+    <img class="menu__overlay" src="assets/img/menu-overlay.jpg" alt="Friss pékáru" width="900" height="829" loading="lazy">
   </div>
   <div class="menu__text">
     <p class="eyebrow" data-i18n="menu.eyebrow">A kínálatból</p>
@@ -211,7 +265,7 @@
   </div>
   <div class="world__cards">
     <a class="wcard wcard--apartment" href="https://apartman.lazuli.hu/">
-      <img src="assets/img/social-3.jpg" alt="Lazuli Apartment">
+      <img src="assets/img/social-3.jpg" alt="Lazuli Apartment" width="1400" height="933" loading="lazy">
       <div class="wcard__body">
         <span class="wcard__line gold" aria-hidden="true"></span>
         <h3 data-i18n="world.apt.title">Lazuli Apartment</h3>
@@ -220,7 +274,7 @@
       <span class="wcard__go wcard__go--gold" aria-hidden="true"></span>
     </a>
     <a class="wcard wcard--med" href="#">
-      <img src="assets/img/social-2.jpg" alt="Lazuli Med">
+      <img src="assets/img/social-2.jpg" alt="Lazuli Med" width="1400" height="787" loading="lazy">
       <div class="wcard__body">
         <span class="wcard__line teal" aria-hidden="true"></span>
         <h3 data-i18n="world.med.title">Lazuli Med</h3>
@@ -230,6 +284,8 @@
     </a>
   </div>
 </section>
+
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -279,11 +335,12 @@
 
 <!-- ============ SCRIPTS ============ -->
 <script src="i18n.js"></script>
-<!-- Lenis smooth scroll -->
-<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<!-- Lenis smooth scroll (saját hoston, v1.1.20) -->
+<script src="assets/js/lenis.min.js"></script>
 <script>
   (function(){
     if (typeof Lenis === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     window.__lenis = lenis;
     function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
@@ -301,12 +358,18 @@
     var nav = document.getElementById('nav');
     var btn = document.getElementById('navToggle');
     var menu = document.getElementById('mobileMenu');
+    var panel = menu.querySelector('.mobile-menu__panel');
+    var lastFocused = null;
+    function focusables(){ return panel.querySelectorAll('a[href], button:not([disabled])'); }
     function openMenu(){
+      lastFocused = document.activeElement;
       menu.classList.add('is-open');
       menu.setAttribute('aria-hidden','false');
       btn.setAttribute('aria-expanded','true');
       document.body.classList.add('menu-open');
       if (window.__lenis) window.__lenis.stop();
+      var f = focusables();
+      if (f.length) f[0].focus();
     }
     function closeMenu(){
       menu.classList.remove('is-open');
@@ -314,13 +377,23 @@
       btn.setAttribute('aria-expanded','false');
       document.body.classList.remove('menu-open');
       if (window.__lenis) window.__lenis.start();
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
     btn.addEventListener('click', openMenu);
     menu.querySelectorAll('[data-menu-close]').forEach(function(el){
       el.addEventListener('click', closeMenu);
     });
     document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+      if (!menu.classList.contains('is-open')) return;
+      if (e.key === 'Escape'){ closeMenu(); return; }
+      // fókuszcsapda: Tab a panelen belül marad
+      if (e.key === 'Tab'){
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
     });
     window.addEventListener('resize', function(){
       if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu();

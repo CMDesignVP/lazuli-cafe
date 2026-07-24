@@ -25,7 +25,7 @@ jobs:
 
       - name: 📂 Sync files to SiteGround via FTPS
         if: steps.check.outputs.ready == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -42,5 +42,7 @@ jobs:
             **/.git*/**
             **/.github/**
             **/.figma/**
+            **/.claude/**
             **/.DS_Store
             **/README.md
+            **/serve.json

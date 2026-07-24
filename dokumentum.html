@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
 <title>Dokumentum — Lazuli Café</title>
+<meta name="description" content="Lazuli Café dokumentumok: étlap-itallap, ÁSZF és adatkezelési tájékoztató.">
 <link rel="icon" type="image/png" href="assets/icons/fav.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;700&family=Geist+Mono:wght@400;500&family=Funnel+Display:wght@400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<a class="skip-link" href="#tartalom" data-i18n="nav.skip">Ugrás a tartalomra</a>
 
 <!-- ============ HEADER ============ -->
 <header class="hero" style="min-height:0;background:var(--brown);">
@@ -19,7 +20,7 @@
     <div class="nav__left">
       <a class="nav__logo" href="/" data-home><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
     </div>
-    <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="nav">
+    <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__menu">
@@ -53,7 +54,7 @@
 </aside>
 
 <!-- ============ PDF ============ -->
-<main class="doc">
+<main class="doc" id="tartalom">
   <div class="doc__inner">
     <p class="doc__sub" id="docSub">Dokumentum</p>
     <h1 class="doc__title" id="docTitle">Dokumentum</h1>
@@ -87,8 +88,8 @@
     <div class="footer__col">
       <p class="footer__title" data-i18n="foot.follow">KÖVESS</p>
       <div class="footer__social">
-        <a href="#"><img src="assets/icons/icon-instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="assets/icons/icon-facebook.svg" alt="Facebook"></a>
+        <a href="https://www.instagram.com/cafelazuli.hegyko/"><img src="assets/icons/icon-instagram.svg" alt="Instagram"></a>
+        <a href="https://www.facebook.com/cafelazuli.hegyko"><img src="assets/icons/icon-facebook.svg" alt="Facebook"></a>
       </div>
     </div>
   </div>
@@ -110,11 +111,33 @@
     var btn = document.getElementById('navToggle');
     var menu = document.getElementById('mobileMenu');
     if (!btn || !menu) return;
-    function openMenu(){ menu.classList.add('is-open'); menu.setAttribute('aria-hidden','false'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('menu-open'); }
-    function closeMenu(){ menu.classList.remove('is-open'); menu.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); }
+    var panel = menu.querySelector('.mobile-menu__panel');
+    var lastFocused = null;
+    function focusables(){ return panel.querySelectorAll('a[href], button:not([disabled])'); }
+    function openMenu(){
+      lastFocused = document.activeElement;
+      menu.classList.add('is-open'); menu.setAttribute('aria-hidden','false'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('menu-open');
+      var f = focusables();
+      if (f.length) f[0].focus();
+    }
+    function closeMenu(){
+      menu.classList.remove('is-open'); menu.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open');
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
     btn.addEventListener('click', openMenu);
     menu.querySelectorAll('[data-menu-close]').forEach(function(el){ el.addEventListener('click', closeMenu); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(); });
+    document.addEventListener('keydown', function(e){
+      if (!menu.classList.contains('is-open')) return;
+      if (e.key === 'Escape'){ closeMenu(); return; }
+      // fókuszcsapda: Tab a panelen belül marad
+      if (e.key === 'Tab'){
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    });
     window.addEventListener('resize', function(){ if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu(); });
   })();
 

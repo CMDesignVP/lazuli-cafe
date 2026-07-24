@@ -6,6 +6,7 @@
 (function () {
   var T = {
     hu: {
+      "nav.skip": "Ugrás a tartalomra",
       "nav.home": "főoldal",
       "nav.menu": "étlap-itallap",
       "nav.lazuli": "Lazuli",
@@ -91,6 +92,7 @@
     },
 
     en: {
+      "nav.skip": "Skip to content",
       "nav.home": "home",
       "nav.menu": "menu",
       "nav.lazuli": "Lazuli",
@@ -176,6 +178,7 @@
     },
 
     de: {
+      "nav.skip": "Zum Inhalt springen",
       "nav.home": "Startseite",
       "nav.menu": "Speisekarte",
       "nav.lazuli": "Lazuli",

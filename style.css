@@ -9,7 +9,8 @@
   --brown:#3A2818;
   --ink:#1A1A1A;
   --body:#2C2C2C;
-  --pink:#F16B82;
+  --pink:#F16B82;       /* sötét háttéren (WCAG AA: 4.79:1 a barnán) */
+  --pink-deep:#BB3B55;  /* világos háttéren és gombokon (4.66:1 a krémen, 5.43:1 fehérrel) */
   --gold:#E3C08B;
   --gold2:#DAAF7C;
   --teal:#88C5CB;
@@ -24,7 +25,16 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;overflow-x:clip;}
+html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:90px;}
+/* mozgásérzékeny felhasználóknak: animációk és smooth scroll kikapcsolása */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
 /* Lenis smooth scroll */
 html.lenis,html.lenis body{height:auto;}
 .lenis.lenis-smooth{scroll-behavior:auto !important;}
@@ -43,6 +53,15 @@ img{display:block;max-width:100%;}
 a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 
+/* ---------- skip link (csak fókusznál látszik) ---------- */
+.skip-link{
+  position:fixed;top:0;left:-9999px;z-index:300;
+  background:var(--brown);color:#fff;
+  padding:12px 20px;border-radius:0 0 8px 0;
+  font-size:15px;
+}
+.skip-link:focus{left:0;}
+
 /* ---------- shared type ---------- */
 .eyebrow{
   font-family:var(--mono);
@@ -50,7 +69,7 @@ ul{list-style:none;}
   font-size:13px;
   letter-spacing:3px;
   line-height:17px;
-  color:var(--pink);
+  color:var(--pink-deep);
   text-transform:uppercase;
 }
 .eyebrow.center{text-align:center;}
@@ -63,7 +82,9 @@ ul{list-style:none;}
 }
 .h2.center{text-align:center;}
 .h2.light{color:#fff;}
-.pink{color:var(--pink);font-style:italic;}
+.pink{color:var(--pink-deep);font-style:italic;}
+/* sötét hátterű szekciókban a világosabb pink olvasható */
+.hero .pink,.rev .pink,.rev .eyebrow,.card--dark .pink{color:var(--pink);}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -75,7 +96,7 @@ ul{list-style:none;}
   white-space:nowrap;
 }
 .btn--primary{
-  background:var(--pink);
+  background:var(--pink-deep);
   color:#fff;
   font-weight:500;
   font-size:15px;
@@ -106,6 +127,7 @@ ul{list-style:none;}
 .hero{
   position:relative;
   min-height:100vh;
+  min-height:100svh; /* mobil címsáv nélküli magasság, ahol támogatott */
   background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.25) 45%, rgba(0,0,0,.80)),
              url("assets/img/hero-bg.jpg") center/cover no-repeat;
   background-color:var(--brown);
@@ -134,12 +156,14 @@ ul{list-style:none;}
 .nav__logo img{height:85px;width:auto;transition:height .35s ease;}
 /* nyelvváltó zászlók */
 .nav__lang{display:flex;align-items:center;gap:7px;}
+/* a gomb találati felülete min. 24px (WCAG 2.2), a zászló vizuálisan kisebb */
 .lang-flag{
-  width:26px;height:18px;padding:0;border:0;
-  border-radius:3px;overflow:hidden;background:none;cursor:pointer;opacity:.4;
-  display:inline-flex;transition:opacity .2s, transform .15s;
+  width:32px;height:24px;padding:0;border:0;
+  background:none;cursor:pointer;opacity:.4;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:opacity .2s, transform .15s;
 }
-.lang-flag svg{width:100%;height:100%;display:block;}
+.lang-flag svg{width:26px;height:18px;display:block;border-radius:3px;}
 .lang-flag:hover{opacity:.75;}
 .lang-flag.active{opacity:1;}
 /* logo is dark-on-transparent in source; invert to read on dark nav */
@@ -247,8 +271,9 @@ ul{list-style:none;}
 .card--dark{background:var(--brown);}
 .card__time{
   font-family:var(--mono);font-size:18px;letter-spacing:3px;
-  line-height:23px;color:var(--pink);
+  line-height:23px;color:var(--pink-deep);
 }
+.card--dark .card__time{color:var(--pink);}
 .card__num{
   font-family:var(--serif);font-style:italic;font-size:80px;line-height:80px;color:var(--pink);
   margin-top:20px;
@@ -311,7 +336,7 @@ ul{list-style:none;}
 }
 .cat-row .dash{width:20px;height:1px;background:var(--pink);flex:none;}
 .cat-name{
-  font-family:var(--mono);font-size:14px;letter-spacing:3px;color:var(--pink);
+  font-family:var(--mono);font-size:14px;letter-spacing:3px;color:var(--pink-deep);
   width:170px;flex:none;
 }
 .cat-desc{font-size:16px;color:var(--body);text-transform:uppercase;letter-spacing:.3px;}
@@ -357,12 +382,12 @@ ul{list-style:none;}
 }
 .hours__key{
   display:flex;align-items:center;gap:14px;
-  font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);
+  font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink-deep);
 }
 .hours__key .dash{width:20px;height:1px;background:var(--pink);flex:none;}
 .hours__val{font-size:20px;line-height:24px;color:var(--ink);}
 .contact{margin-top:28px;display:flex;flex-direction:column;gap:20px;padding-top:12px;}
-.cKey{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);}
+.cKey{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink-deep);}
 .cVal{font-size:22px;line-height:27px;color:var(--ink);margin-top:4px;}
 .loc__left .btn--primary{align-self:flex-start;margin-top:28px;}
 .loc__map{flex:1;min-width:280px;}
@@ -386,7 +411,7 @@ ul{list-style:none;}
   font-size:14px;color:var(--brown);
 }
 .social__link img{width:32px;height:32px;}
-.social__link:hover{color:var(--pink);}
+.social__link:hover{color:var(--pink-deep);}
 
 /* =================================================================
    LAZULI VILÁG
@@ -446,7 +471,7 @@ ul{list-style:none;}
 .footer__routes img{height:40px;width:auto;}
 .footer__bottom{
   display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--mono);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4);
+  font-family:var(--mono);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.6);
 }
 .footer__legal a{color:inherit;transition:color .2s;}
 .footer__legal a:hover{color:#fff;}
@@ -456,11 +481,11 @@ ul{list-style:none;}
    ================================================================= */
 .doc{padding:160px var(--pad) 80px;min-height:70vh;background:var(--cream);}
 .doc__inner{max-width:1100px;margin:0 auto;}
-.doc__sub{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink);text-transform:uppercase;margin-bottom:12px;}
+.doc__sub{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--pink-deep);text-transform:uppercase;margin-bottom:12px;}
 .doc__title{font-family:var(--serif);font-weight:400;font-size:48px;line-height:1.1;color:var(--ink);margin-bottom:32px;}
 #adobe-dc-view{width:100%;min-height:80vh;border-radius:8px;overflow:hidden;}
 .doc__fallback{margin-top:16px;font-size:15px;color:var(--body);}
-.doc__fallback a{color:var(--pink);text-decoration:underline;}
+.doc__fallback a{color:var(--pink-deep);text-decoration:underline;}
 @media (max-width:1200px){ .doc{padding-top:120px;} }
 @media (max-width:900px){ .doc{padding:100px 40px 56px;} .doc__title{font-size:34px;} }
 
@@ -493,7 +518,8 @@ ul{list-style:none;}
 .mobile-menu__close:hover{background:rgba(255,255,255,.1);}
 .mobile-menu__close svg{width:1.5rem;height:1.5rem;}
 .mobile-menu__lang{display:flex;align-items:center;gap:14px;}
-.mobile-menu__lang .lang-flag{width:34px;height:23px;}
+.mobile-menu__lang .lang-flag{width:40px;height:29px;}
+.mobile-menu__lang .lang-flag svg{width:34px;height:23px;}
 .mobile-menu__links{
   display:flex;flex-direction:column;gap:1.25rem;
   border-top:1px solid rgba(255,255,255,.14);padding-top:clamp(1.25rem,3vw,2rem);
@@ -532,11 +558,6 @@ body.menu-open{overflow:hidden;}
   .nav__menu li:not(:last-child)::after{display:none;}
   .nav__menu a{font-size:17px;padding:8px 0;}
   .nav__cta{display:none;order:4;}
-  .nav--open .nav__menu{display:flex;}
-  .nav--open .nav__cta{display:inline-flex;}
-  .nav--open .nav__toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
-  .nav--open .nav__toggle span:nth-child(2){opacity:0;}
-  .nav--open .nav__toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
   .hero__content{padding:100px 80px 80px;margin-top:0;max-width:none;}
 }
 
