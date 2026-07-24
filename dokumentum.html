@@ -185,25 +185,60 @@
     if (saved === "de") { DOC = { pdf:DOC.pdf, lang:"de", name:"Speisekarte", sub:"SPEISEKARTE" }; }
   }
   var pdfURL = new URL(DOC.pdf, location.href).href;
-
-  document.title = DOC.name + " — Lazuli Café";
-  document.getElementById("docTitle").textContent = DOC.name;
-  document.getElementById("docSub").textContent = DOC.sub;
   document.getElementById("docDownload").setAttribute("href", pdfURL);
+
+  // A cím / alcím / letöltés-link nyelvi változatai — a nav nyelvváltója ezeket is
+  // frissíti, miközben ugyanezen az oldalon maradunk (a feltöltött PDF háromnyelvű).
+  var DOC_FAMILY = {
+    etlap:"etlap", menu:"etlap",
+    aszf:"aszf", terms:"aszf", agb:"aszf",
+    adatkezeles:"adatkezeles", privacy:"adatkezeles", datenschutz:"adatkezeles"
+  };
+  var DOC_I18N = {
+    etlap: {
+      hu:{ name:"Étlap-itallap", sub:"A KÍNÁLATBÓL" },
+      en:{ name:"Menu", sub:"OUR MENU" },
+      de:{ name:"Speisekarte", sub:"SPEISEKARTE" }
+    },
+    aszf: {
+      hu:{ name:"Általános Szerződési Feltételek", sub:"JOGI INFORMÁCIÓK" },
+      en:{ name:"Terms & Conditions", sub:"LEGAL" },
+      de:{ name:"Allgemeine Geschäftsbedingungen", sub:"RECHTLICHES" }
+    },
+    adatkezeles: {
+      hu:{ name:"Adatkezelési tájékoztató", sub:"JOGI INFORMÁCIÓK" },
+      en:{ name:"Privacy Policy", sub:"LEGAL" },
+      de:{ name:"Datenschutzerklärung", sub:"RECHTLICHES" }
+    }
+  };
+  var DL_TEXT = { hu:"PDF megnyitása új lapon", en:"Open PDF in a new tab", de:"PDF in neuem Tab öffnen" };
+  var docFamily = DOC_FAMILY[seg] || "etlap";
+
+  function updateDocChrome(lang){
+    var info = (DOC_I18N[docFamily] && DOC_I18N[docFamily][lang]) || DOC_I18N[docFamily].hu;
+    document.title = info.name + " — Lazuli Café";
+    document.getElementById("docTitle").textContent = info.name;
+    document.getElementById("docSub").textContent = info.sub;
+    document.getElementById("docDownload").textContent = DL_TEXT[lang] || DL_TEXT.hu;
+  }
+  updateDocChrome(DOC.lang);
 
   // a fejléc/lábléc nyelvét kezdetben az URL dönti el (nem írjuk felül a főoldal nyelvét).
   // Az i18n.js init() után kell futnia, ezért DOMContentLoaded-re kötjük.
   function setDocLang(){
     if (!window.LazuliI18n) return;
     window.LazuliI18n.applyLang(DOC.lang, false);
-    // A dokumentum-oldalon a zászló CSAK a nav/footer nyelvét váltja, helyben maradunk
-    // (a feltöltött PDF eleve háromnyelvű). Ezért lecseréljük a zászlógombokat, hogy
-    // ne az i18n.js alap kezelője fusson (ami URL-t váltana), és sima nyelvváltást kössünk rájuk.
+    updateDocChrome(DOC.lang);
+    // A dokumentum-oldalon a zászló CSAK a nav/footer + a fenti cím/alcím/letöltés
+    // nyelvét váltja, helyben maradunk (a feltöltött PDF eleve háromnyelvű). Ezért
+    // lecseréljük a zászlógombokat, hogy ne az i18n.js alap (URL-t váltó) kezelője fusson.
     document.querySelectorAll(".lang-flag").forEach(function (b) {
       var clone = b.cloneNode(true);
       b.parentNode.replaceChild(clone, b);
       clone.addEventListener("click", function () {
-        window.LazuliI18n.applyLang(clone.getAttribute("data-lang"), true);
+        var lang = clone.getAttribute("data-lang");
+        window.LazuliI18n.applyLang(lang, true);
+        updateDocChrome(lang);
       });
     });
   }
