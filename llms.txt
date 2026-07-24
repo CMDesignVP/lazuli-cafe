@@ -1,0 +1,43 @@
+# Lazuli Café
+
+> Pékség és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,
+> minőségi sütemények és torták, mentes sütik, friss reggelik és bár. Tágas terasz,
+> klimatizált belső tér, ingyenes parkolás. Elvitel és előrendelés is. Nyitva minden
+> nap 8:00–18:00.
+
+Statikus, háromnyelvű (magyar / angol / német) weboldal. A nyelvet az URL adja
+(`/` = magyar, `/en` = angol, `/de` = német), a tartalmat kliensoldali JavaScript
+fordítja. A dokumentumok (étlap, jogi tájékoztatók) PDF-ként, a `dokumentum.html`
+oldalon jelennek meg.
+
+## Kapcsolat és alapadatok
+
+- [Főoldal](https://cafe.lazuli.hu/): bemutatkozás, kínálat, vendégvélemények, helyszín.
+- Cím: 9437 Hegykő, Alsószer utca 18.
+- Telefon: +36 (30) 376 7800
+- E-mail: hegyko@lazuli.hu
+- Nyitvatartás: hétfő–vasárnap 8:00–18:00. Asztalfoglalás ajánlott péntek–szombat.
+- Instagram: https://www.instagram.com/cafelazuli.hegyko/
+- Facebook: https://www.facebook.com/cafelazuli.hegyko
+
+## Kínálat / dokumentumok
+
+- [Étlap-itallap (HU)](https://cafe.lazuli.hu/etlap): kávé, sütemények és torták,
+  mentes sütik (csütörtöktől vasárnapig), reggeli, bár (long drinkek, borok, röviditalok).
+- [Menu (EN/DE)](https://cafe.lazuli.hu/menu)
+
+## Nyelvi változatok
+
+- [Kezdőlap magyarul](https://cafe.lazuli.hu/)
+- [Home in English](https://cafe.lazuli.hu/en)
+- [Startseite auf Deutsch](https://cafe.lazuli.hu/de)
+
+## Jogi információk
+
+- [Adatkezelési tájékoztató (HU)](https://cafe.lazuli.hu/adatkezeles) · [Privacy (EN)](https://cafe.lazuli.hu/privacy) · [Datenschutz (DE)](https://cafe.lazuli.hu/datenschutz)
+- [ÁSZF (HU)](https://cafe.lazuli.hu/aszf) · [Terms (EN)](https://cafe.lazuli.hu/terms) · [AGB (DE)](https://cafe.lazuli.hu/agb)
+
+## Kapcsolódó márkák (Lazuli világ)
+
+- [Lazuli Apartment](https://apartman.lazuli.hu/): 12 apartman Hegykőn, a termálfürdőtől öt perc sétára.
+- [Lazuli Med](https://med.lazuli.hu/): állapotfelmérés és célzott terápiák, egészségprogramok.
