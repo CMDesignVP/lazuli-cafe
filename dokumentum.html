@@ -20,6 +20,17 @@
   <nav class="nav nav--dark" id="nav">
     <div class="nav__left">
       <a class="nav__logo" href="/" data-home><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
+      <div class="nav__lang" role="group" aria-label="Nyelvválasztó">
+        <button class="lang-flag" data-lang="hu" aria-label="Magyar" title="Magyar">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height=".667" fill="#CD2A3E"/><rect y="1.333" width="3" height=".667" fill="#436F4D"/></svg>
+        </button>
+        <button class="lang-flag" data-lang="en" aria-label="English" title="English">
+          <svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30 M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30 M60,0 0,30" stroke="#C8102E" stroke-width="3"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>
+        </button>
+        <button class="lang-flag" data-lang="de" aria-label="Deutsch" title="Deutsch">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#FFCE00"/><rect width="3" height="1.333" fill="#D00"/><rect width="3" height=".667" fill="#000"/></svg>
+        </button>
+      </div>
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
@@ -43,6 +54,11 @@
       <button type="button" class="mobile-menu__close" data-menu-close aria-label="Menü bezárása">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
+    </div>
+    <div class="mobile-menu__lang" role="group" aria-label="Nyelvválasztó">
+      <button class="lang-flag" data-lang="hu" aria-label="Magyar" title="Magyar"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height=".667" fill="#CD2A3E"/><rect y="1.333" width="3" height=".667" fill="#436F4D"/></svg></button>
+      <button class="lang-flag" data-lang="en" aria-label="English" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30 M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30 M60,0 0,30" stroke="#C8102E" stroke-width="3"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg></button>
+      <button class="lang-flag" data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#FFCE00"/><rect width="3" height="1.333" fill="#D00"/><rect width="3" height=".667" fill="#000"/></svg></button>
     </div>
     <ul class="mobile-menu__links">
       <li><a href="/" data-home data-menu-close data-i18n="nav.home">főoldal</a></li>
@@ -175,9 +191,22 @@
   document.getElementById("docSub").textContent = DOC.sub;
   document.getElementById("docDownload").setAttribute("href", pdfURL);
 
-  // a fejléc/lábléc nyelvét az URL dönti el (nem írjuk felül a főoldal nyelvét).
+  // a fejléc/lábléc nyelvét kezdetben az URL dönti el (nem írjuk felül a főoldal nyelvét).
   // Az i18n.js init() után kell futnia, ezért DOMContentLoaded-re kötjük.
-  function setDocLang(){ if (window.LazuliI18n) window.LazuliI18n.applyLang(DOC.lang, false); }
+  function setDocLang(){
+    if (!window.LazuliI18n) return;
+    window.LazuliI18n.applyLang(DOC.lang, false);
+    // A dokumentum-oldalon a zászló CSAK a nav/footer nyelvét váltja, helyben maradunk
+    // (a feltöltött PDF eleve háromnyelvű). Ezért lecseréljük a zászlógombokat, hogy
+    // ne az i18n.js alap kezelője fusson (ami URL-t váltana), és sima nyelvváltást kössünk rájuk.
+    document.querySelectorAll(".lang-flag").forEach(function (b) {
+      var clone = b.cloneNode(true);
+      b.parentNode.replaceChild(clone, b);
+      clone.addEventListener("click", function () {
+        window.LazuliI18n.applyLang(clone.getAttribute("data-lang"), true);
+      });
+    });
+  }
   if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", setDocLang); }
   else { setDocLang(); }
 </script>
