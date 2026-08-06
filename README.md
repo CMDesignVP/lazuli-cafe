@@ -51,6 +51,22 @@ python3 -m http.server 8080
 - Az Adobe PDF Embed `clientId` domainhez kötött (`cafe.lazuli.hu`).
 - Az adatkezelési tájékoztatóban szerepeljen a Google Maps embed és az Adobe viewer.
 
+### Cache-busting (FONTOS)
+A szerver a `style.css` / `i18n.js` fájlokat **1 éves** `Cache-Control: max-age=31536000`
+fejléccel adja ki, ezért a visszatérő látogatók a régi verziót látnák egy módosítás után.
+Ezért minden ilyen hivatkozás verzió-paramétert kap:
+
+```html
+<link rel="stylesheet" href="style.css?v=ÉÉÉÉHHNN">
+<script src="i18n.js?v=ÉÉÉÉHHNN"></script>
+```
+
+> **Ha a `style.css`, az `i18n.js` vagy az `assets/css/fonts.css` tartalma változik,
+> a `?v=` értéket is át kell írni** az `index.html`, `dokumentum.html` és `404.html`
+> fájlokban (a `404.html`-ben csak CSS van). Enélkül a módosítás nem jut el a
+> visszatérő látogatókhoz. Az `assets/js/lenis.min.js` verziózott vendor fájl,
+> nem változik, ezért szándékosan nincs `?v=` rajta.
+
 ## Deploy
 A `main` ágra történő push automatikusan FTPS-sel kirakja a fájlokat a SiteGround tárhelyre
 (`.github/workflows/deploy.yml`). Az action commit-SHA-ra van pinelve. A GitHub repo
