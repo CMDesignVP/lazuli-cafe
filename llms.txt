@@ -3,7 +3,7 @@
 > Pékség és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,
 > minőségi sütemények és torták, mentes sütik, friss reggelik és bár. Tágas terasz,
 > klimatizált belső tér, ingyenes parkolás. Elvitel és előrendelés is. Nyitva minden
-> nap 8:00–18:00.
+> nap 10:00–18:00.
 
 Statikus, háromnyelvű (magyar / angol / német) weboldal. A nyelvet az URL adja
 (`/` = magyar, `/en` = angol, `/de` = német), a tartalmat kliensoldali JavaScript
@@ -16,7 +16,7 @@ oldalon jelennek meg.
 - Cím: 9437 Hegykő, Alsószer utca 18.
 - Telefon: +36 (30) 376 7800
 - E-mail: hegyko@lazuli.hu
-- Nyitvatartás: hétfő–vasárnap 8:00–18:00. Asztalfoglalás ajánlott péntek–szombat.
+- Nyitvatartás: hétfő–vasárnap 10:00–18:00. Asztalfoglalás ajánlott péntek–szombat.
 - Instagram: https://www.instagram.com/cafelazuli.hegyko/
 - Facebook: https://www.facebook.com/cafelazuli.hegyko
 
