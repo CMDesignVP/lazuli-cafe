@@ -44,6 +44,7 @@ jobs:
             **/.github/**
             **/.figma/**
             **/.claude/**
+            **/tools/**
             **/.DS_Store
             **/README.md
             **/serve.json
