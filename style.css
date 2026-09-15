@@ -491,8 +491,12 @@ a.badge svg{width:32px;height:32px;flex:none;display:block;}
 #adobe-dc-view{width:100%;min-height:80vh;border-radius:8px;overflow:hidden;}
 .doc__fallback{margin-top:16px;font-size:15px;color:var(--body);}
 .doc__fallback a{color:var(--pink-deep);text-decoration:underline;}
+/* Az étlap-oldalak bevezetője: a PDF mellett ez adja az oldal indexelhető szövegét. */
+.doc__intro{max-width:760px;font-size:17px;line-height:1.65;color:var(--body);margin-bottom:18px;}
+.doc__intro--sections{font-family:var(--mono);font-size:13px;letter-spacing:.5px;color:var(--pink-deep);margin-bottom:32px;}
+.doc__title:has(+ .doc__intro){margin-bottom:20px;}
 @media (max-width:1200px){ .doc{padding-top:120px;} }
-@media (max-width:900px){ .doc{padding:100px 40px 56px;} .doc__title{font-size:34px;} }
+@media (max-width:900px){ .doc{padding:100px 40px 56px;} .doc__title{font-size:34px;} .doc__intro{font-size:16px;} }
 
 /* =================================================================
    OFF-CANVAS MOBIL MENÜ (jobbról beúszó)

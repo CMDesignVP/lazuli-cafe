@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="de">
 <head>
 <!-- CookieYes banner (consent) – a GTM elé töltjük be -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/cb4bae2f5099c113811184f11fed3576/script.js"></script>
@@ -14,18 +14,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="/">
-<title>Jogi dokumentumok — Lazuli Café</title>
-<meta name="description" content="Lazuli Café jogi dokumentumai: ÁSZF és adatkezelési tájékoztató.">
-<!-- Ez az oldal HAT URL-t szolgál ki (aszf/terms/agb, adatkezeles/privacy/datenschutz),
-     ezért statikusan nem kaphat URL-enkénti canonicalt. Beágyazott PDF-ként nincs
-     SEO-értéke, viszont duplikátumként ártana — ezért kimarad az indexből.
-     Az étlap NEM ide tartozik: annak saját oldala van (etlap/menu/speisekarte). -->
-<meta name="robots" content="noindex, follow">
+<title>Lazuli Café — Bäckerei und Kaffeehaus am Neusiedler See</title>
+<meta name="description" content="Bäckerei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse. Täglich 10:00–18:00 geöffnet.">
+
+<!-- nyelvi változatok: mindegyiknek ÖNÁLLÓ fájlja és canonicalja van -->
+<link rel="canonical" href="https://cafe.lazuli.hu/de">
+<link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/">
+<link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en">
+<link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de">
+<link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lazuli Café">
+<meta property="og:title" content="Lazuli Café — Bäckerei und Kaffeehaus am Neusiedler See">
+<meta property="og:description" content="Bäckerei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse.">
+<meta property="og:url" content="https://cafe.lazuli.hu/de">
+<meta property="og:image" content="https://cafe.lazuli.hu/assets/img/hero-bg.jpg">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/png" href="assets/icons/fav.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/img/hero-bg.jpg" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/fonts.css?v=20260806">
 <link rel="stylesheet" href="style.css?v=20260806">
+
+<!-- Strukturált adat a Google találatokhoz (kávézó: cím, nyitvatartás, elérhetőség) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "@id": "https://cafe.lazuli.hu/#cafe",
+  "name": "Lazuli Café",
+  "image": "https://cafe.lazuli.hu/assets/img/hero-bg.jpg",
+  "url": "https://cafe.lazuli.hu/",
+  "telephone": "+36303767800",
+  "email": "hegyko@lazuli.hu",
+  "servesCuisine": [
+    "Kaffee",
+    "Gebäck",
+    "Frühstück"
+  ],
+  "priceRange": "$$",
+  "hasMenu": "https://cafe.lazuli.hu/speisekarte",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Alsószer utca 18.",
+    "addressLocality": "Hegykő",
+    "postalCode": "9437",
+    "addressCountry": "HU"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/cafelazuli.hegyko/",
+    "https://www.facebook.com/cafelazuli.hegyko"
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -36,9 +97,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a class="skip-link" href="#tartalom" data-i18n="nav.skip">Ugrás a tartalomra</a>
 
-<!-- ============ HEADER ============ -->
-<header class="hero" style="min-height:0;background:var(--brown);">
-  <nav class="nav nav--dark" id="nav">
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <nav class="nav" id="nav">
     <div class="nav__left">
       <a class="nav__logo" href="/" data-home><img src="assets/icons/logo.svg" alt="Lazuli Café"></a>
       <div class="nav__lang" role="group" aria-label="Nyelvválasztó">
@@ -59,11 +120,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="nav__menu">
       <li><a href="/" data-home data-i18n="nav.home">főoldal</a></li>
       <li><a href="/etlap" data-doc="etlap" data-i18n="nav.menu">étlap-itallap</a></li>
-      <li><a href="/#vilag" data-anchor="vilag" data-i18n="nav.lazuli">Lazuli</a></li>
-      <li><a href="/#helyszin" data-anchor="helyszin" data-i18n="nav.contact">Kapcsolat</a></li>
+      <li><a href="#vilag" data-anchor="vilag" data-i18n="nav.lazuli">Lazuli</a></li>
+      <li><a href="#helyszin" data-anchor="helyszin" data-i18n="nav.contact">Kapcsolat</a></li>
     </ul>
     <a class="btn btn--primary nav__cta" href="tel:+36303767800"><span data-i18n="btn.book">asztalfoglalás</span> <span class="arrow" aria-hidden="true"></span></a>
   </nav>
+
+  <div class="hero__content">
+    <h1 class="hero__display" data-i18n="hero.h1">Nem csak<br><span class="pink">kávé.</span></h1>
+    <p class="hero__subhead" data-i18n="hero.sub">Minőségi ízek, nyugodt pillanatok és egy találkozóhely Hegykő szívében.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--primary" href="/etlap" data-doc="etlap"><span data-i18n="btn.menu">étlap-itallap</span> <span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--ghost" href="tel:+36303767800" data-i18n="btn.call">Hívj minket&nbsp;&nbsp;→</a>
+    </div>
+  </div>
 </header>
 
 <!-- ============ MOBIL OFF-CANVAS MENÜ ============ -->
@@ -84,21 +154,170 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="mobile-menu__links">
       <li><a href="/" data-home data-menu-close data-i18n="nav.home">főoldal</a></li>
       <li><a href="/etlap" data-doc="etlap" data-menu-close data-i18n="nav.menu">étlap-itallap</a></li>
-      <li><a href="/#vilag" data-anchor="vilag" data-menu-close data-i18n="nav.lazuli">Lazuli</a></li>
-      <li><a href="/#helyszin" data-anchor="helyszin" data-menu-close data-i18n="nav.contact">Kapcsolat</a></li>
+      <li><a href="#vilag" data-anchor="vilag" data-menu-close data-i18n="nav.lazuli">Lazuli</a></li>
+      <li><a href="#helyszin" data-anchor="helyszin" data-menu-close data-i18n="nav.contact">Kapcsolat</a></li>
     </ul>
     <a class="btn btn--primary mobile-menu__cta" href="tel:+36303767800" data-menu-close><span data-i18n="btn.book">asztalfoglalás</span> <span class="arrow" aria-hidden="true"></span></a>
   </div>
 </aside>
 
-<!-- ============ PDF ============ -->
-<main class="doc" id="tartalom">
-  <div class="doc__inner">
-    <p class="doc__sub" id="docSub">Dokumentum</p>
-    <h1 class="doc__title" id="docTitle">Dokumentum</h1>
-    <div id="adobe-dc-view" style="width:100%;"></div>
-    <p class="doc__fallback"><a id="docDownload" href="#" target="_blank" rel="noopener">PDF megnyitása új lapon</a></p>
+<main id="tartalom">
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="intro__inner">
+    <div class="intro__photo">
+      <img src="assets/img/cafe.webp" alt="Lazuli Café belső tér" width="1050" height="1400">
+    </div>
+    <div class="intro__text">
+      <img class="intro__watermark" src="assets/icons/intro-watermark.svg" alt="" aria-hidden="true">
+      <div class="intro__head">
+        <p class="eyebrow" data-i18n="intro.eyebrow">Minőség minden részletben</p>
+        <h2 class="h2" data-i18n="intro.h2">Minőségi ízek,<br><span class="pink">közös pillanatok.</span></h2>
+      </div>
+      <div class="intro__body">
+        <p data-i18n="intro.p1">Családi vállalkozásként hisszük, hogy a vendéglátás a személyes figyelemről és a részletekről szól.</p>
+        <p data-i18n="intro.p2">A minőségi alapanyagok, az olasz Musetti kávé, a kiváló minőségű sütemények és a természetközeli, nyugodt környezet együtt teremtik meg azt a hangulatot, amely miatt jó visszatérni.</p>
+        <blockquote class="intro__quote">
+          <span class="bar" aria-hidden="true"></span>
+          <p data-i18n="intro.quote">A legnagyobb elismerés számunkra, amikor vendégeink újra és újra visszatérnek.</p>
+        </blockquote>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- ============ KÉT IDŐSÍK ============ -->
+<section class="tt">
+  <div class="tt__header">
+    <p class="eyebrow center" data-i18n="tt.eyebrow">A Te ritmusodban</p>
+    <h2 class="h2" data-i18n="tt.h2">Lazuli <span class="pink">minden alkalomra</span></h2>
+  </div>
+  <div class="tt__cards">
+    <article class="card card--light">
+      <p class="card__time" data-i18n="card1.eyebrow">Elvitelre</p>
+      <h3 class="card__head" data-i18n="card1.h">Vidd haza az <span class="pink">élményt</span></h3>
+      <p class="card__body" data-i18n="card1.body">Egy gyors coffee to go, kedvenc süteményeid otthonra vagy egy torta különleges alkalmakra – számos finomságunk elvitelre és előrendelésre is kérhető.</p>
+      <ul class="card__list">
+        <li data-i18n="card1.li1">kávé elvitelre</li>
+        <li data-i18n="card1.li2">tortaszeletek elvitelre</li>
+        <li data-i18n="card1.li3">tortarendelés</li>
+        <li data-i18n="card1.li4">előrendelési lehetőség</li>
+      </ul>
+      <div class="card__img"><img src="assets/img/kinalat-c1.jpg" alt="Coffee to go és péksütemény" width="1400" height="1060" loading="lazy"></div>
+    </article>
+    <article class="card card--dark">
+      <p class="card__time" data-i18n="card2.eyebrow">Helyben a legjobb</p>
+      <h3 class="card__head light" data-i18n="card2.h">Maradj a <span class="pink">pillanatért</span></h3>
+      <p class="card__body" data-i18n="card2.body">Nyugodt terasz, klimatizált belső tér és természetközeli környezet vár Hegykő egyik kedvelt találkozóhelyén.</p>
+      <ul class="card__list">
+        <li data-i18n="card2.li1">tágas terasz</li>
+        <li data-i18n="card2.li2">klimatizált belső tér</li>
+        <li data-i18n="card2.li3">ingyenes parkolás</li>
+        <li data-i18n="card2.li4">figyelmes kiszolgálás</li>
+      </ul>
+      <div class="card__img"><img src="assets/img/kinalat-c2.jpg" alt="Sütemény és kávé a teraszon" width="1400" height="933" loading="lazy"></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ KÍNÁLAT ============ -->
+<section class="menu" id="kinalat">
+  <div class="menu__collage">
+    <span class="menu__watermark" aria-hidden="true">café</span>
+    <img class="menu__main" src="assets/img/menu-main.jpg" alt="A Lazuli Café kínálata" width="1400" height="933" loading="lazy">
+    <img class="menu__overlay" src="assets/img/menu-overlay.jpg" alt="Friss pékáru" width="900" height="829" loading="lazy">
+  </div>
+  <div class="menu__text">
+    <p class="eyebrow" data-i18n="menu.eyebrow">A kínálatból</p>
+    <h2 class="h2" data-i18n="menu.h2"><span class="pink">Kedvencek</span><br>reggeltől estig</h2>
+    <p class="menu__body" data-i18n="menu.body">Az állandó kedvencek mellett mindig találsz nálunk valami újat is – legyen szó szezonális finomságokról vagy helyi különlegességekről.</p>
+    <ul class="cat-list">
+      <li class="cat-row"><span class="dash"></span><span class="cat-name" data-i18n="cat1.name">KÁVÉ</span><span class="cat-desc" data-i18n="cat1.desc">Musetti kávék és kávékülönlegességek</span></li>
+      <li class="cat-row"><span class="dash"></span><span class="cat-name" data-i18n="cat2.name">SÜTI</span><span class="cat-desc" data-i18n="cat2.desc">Minőségi sütemények és torták</span></li>
+      <li class="cat-row"><span class="dash"></span><span class="cat-name" data-i18n="cat3.name">MENTES SÜTI</span><span class="cat-desc" data-i18n="cat3.desc">Csütörtöktől vasárnapig</span></li>
+      <li class="cat-row"><span class="dash"></span><span class="cat-name" data-i18n="cat4.name">REGGELI</span><span class="cat-desc" data-i18n="cat4.desc">Frissen készített reggelik</span></li>
+      <li class="cat-row"><span class="dash"></span><span class="cat-name" data-i18n="cat5.name">BÁR</span><span class="cat-desc" data-i18n="cat5.desc">Long drinkek, borok és röviditalok</span></li>
+    </ul>
+    <a class="btn btn--primary" href="/etlap"><span data-i18n="btn.menu">étlap-itallap</span> <span class="arrow" aria-hidden="true"></span></a>
+  </div>
+</section>
+
+<!-- ============ VENDÉGVÉLEMÉNYEK ============ -->
+<section class="rev">
+  <p class="eyebrow center" data-i18n="rev.eyebrow">Ti mondtátok</p>
+  <h2 class="h2 center light" data-i18n="rev.h2">Ilyen a <span class="pink">Lazuli.</span></h2>
+  <blockquote class="rev__quote">
+    <p class="rev__text" data-i18n="rev.q1">„Fantasztikusan jó hely! Kedves és türelmes személyzet, kiszolgálás 5*, finom ízek, vizuális élmény tökéletes. <span class="pink">Igazán vendégnek éreztük magunkat.</span>”</p>
+  </blockquote>
+  <span class="rev__divider" aria-hidden="true"></span>
+  <blockquote class="rev__quote">
+    <p class="rev__text" data-i18n="rev.q2"><span class="pink">„Kiváló kávézó nagyszerű desszertekkel.</span> Nem volt könnyű választani. És a kávé annyira finom, hogy egy sem lesz elég. Kellemes kiszolgálás, szép kilátás. Nagyon kellemes ülőhelyek.”</p>
+  </blockquote>
+</section>
+
+<!-- ============ HELYSZÍN ============ -->
+<section class="loc" id="helyszin">
+  <div class="loc__left">
+    <p class="eyebrow" data-i18n="loc.eyebrow">Gyere be</p>
+    <h2 class="h2" data-i18n="loc.h2">Hegykő szívében,<br><span class="pink">minden nap.</span></h2>
+    <p class="loc__body" data-i18n="loc.body">Legyen a Lazuli a következő találkozásotok helyszíne – vagy egyszerűen csak egy nyugodt megálló a nap során.</p>
+    <ul class="hours">
+      <li><span class="hours__key"><span class="dash"></span><span data-i18n="loc.hkey1">HÉTFŐ — VASÁRNAP</span></span><span class="hours__val" data-i18n="loc.hval1">10:00 — 18:00</span></li>
+      <li><span class="hours__key"><span class="dash"></span><span data-i18n="loc.hkey2">ASZTALFOGLALÁS</span></span><span class="hours__val" data-i18n="loc.hval2">ajánlott P-Szo</span></li>
+    </ul>
+    <ul class="contact">
+      <li><p class="cKey" data-i18n="loc.ckey1">CÍM</p><p class="cVal" data-i18n="loc.cval1">9437 Hegykő, Alsószer utca 18.</p></li>
+      <li><p class="cKey" data-i18n="loc.ckey2">TELEFON</p><p class="cVal" data-i18n="loc.cval2">+36 (30) 376 7800</p></li>
+      <li><p class="cKey" data-i18n="loc.ckey3">EMAIL</p><p class="cVal" data-i18n="loc.cval3">hegyko@lazuli.hu</p></li>
+    </ul>
+    <a class="btn btn--primary" href="tel:+36303767800"><span data-i18n="btn.book">asztalfoglalás</span> <span class="arrow" aria-hidden="true"></span></a>
+  </div>
+  <div class="loc__map">
+    <iframe src="https://www.google.com/maps?q=9437+Hegyk%C5%91,+Als%C3%B3szer+utca+18&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lazuli Café térkép"></iframe>
+  </div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<section class="social">
+  <div class="social__left">
+    <p class="eyebrow" data-i18n="soc.eyebrow">Kövess minket</p>
+    <h2 class="social__head" data-i18n="soc.h2">Pillanatok a <span class="pink">Lazuli café-ból.</span></h2>
+  </div>
+  <div class="social__right">
+    <a class="social__link" href="https://www.instagram.com/cafelazuli.hegyko/"><img src="assets/icons/icon-instagram.svg" alt=""><span data-i18n="soc.ig">Instagram&nbsp;&nbsp;→</span></a>
+    <a class="social__link" href="https://www.facebook.com/cafelazuli.hegyko"><img src="assets/icons/icon-facebook.svg" alt=""><span data-i18n="soc.fb">Facebook&nbsp;&nbsp;→</span></a>
+  </div>
+</section>
+
+<!-- ============ LAZULI VILÁG ============ -->
+<section class="world" id="vilag">
+  <div class="world__header">
+    <p class="eyebrow" data-i18n="world.eyebrow">A Lazuli élmény</p>
+    <h2 class="h2" data-i18n="world.h2">Fedezd fel a <span class="pink">Lazuli világát</span></h2>
+  </div>
+  <div class="world__cards">
+    <a class="wcard wcard--apartment" href="https://apartman.lazuli.hu/">
+      <img src="assets/img/social-3.jpg" alt="Lazuli Apartment" width="1400" height="933" loading="lazy">
+      <div class="wcard__body">
+        <span class="wcard__line gold" aria-hidden="true"></span>
+        <h3 data-i18n="world.apt.title">Lazuli Apartment</h3>
+        <p data-i18n="world.apt.body">12 apartman Hegykőn, a termálfürdőtől öt perc sétára. Egy intelligens menedék, ahol a technológia a Te kényelmedért dolgozik.</p>
+      </div>
+      <span class="wcard__go wcard__go--gold" aria-hidden="true"></span>
+    </a>
+    <a class="wcard wcard--med" href="https://med.lazuli.hu/" target="_blank" rel="noopener">
+      <img src="assets/img/lazuli-med.jpg" alt="Lazuli Med" width="1241" height="1400" loading="lazy">
+      <div class="wcard__body">
+        <span class="wcard__line teal" aria-hidden="true"></span>
+        <h3 data-i18n="world.med.title">Lazuli Med</h3>
+        <p data-i18n="world.med.body">Részletes állapotfelmérés és célzott terápiák. Akár gyors feltöltődés, akár hosszú távú egészségprogram a célod: szakértőink segítenek.</p>
+      </div>
+      <span class="wcard__go wcard__go--teal" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -121,11 +340,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="footer__title" data-i18n="foot.explore">FELFEDEZÉS</p>
       <a href="https://apartman.lazuli.hu/apartmanok/" data-i18n="foot.l.apartman">Apartman</a>
       <a href="https://med.lazuli.hu/" target="_blank" rel="noopener" data-i18n="foot.l.longevity">Med</a>
-      <a href="/#helyszin" data-anchor="helyszin" data-i18n="foot.l.location">Helyszín</a>
+      <a href="#helyszin" data-anchor="helyszin" data-i18n="foot.l.location">Helyszín</a>
     </nav>
     <div class="footer__col">
       <p class="footer__title" data-i18n="foot.contact">KAPCSOLAT</p>
-      <a href="/#helyszin" data-anchor="helyszin" data-i18n="foot.addr">9437 Hegykő, Alsószer utca 18.</a>
+      <a href="#helyszin" data-anchor="helyszin" data-i18n="foot.addr">9437 Hegykő, Alsószer utca 18.</a>
       <a href="mailto:hegyko@lazuli.hu" data-i18n="foot.email">hegyko@lazuli.hu</a>
       <a href="tel:+36303767800" data-i18n="foot.phone">+36 (30) 376 7800</a>
     </div>
@@ -138,38 +357,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer__divider"></div>
+  <div class="footer__routes">
+    <span class="footer__routes-label" data-i18n="foot.routes">Útvonaltervezés:</span>
+    <a href="https://maps.apple.com/?address=9437%20Hegyk%C5%91,%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-applemaps.png" alt="Apple Maps"></a>
+    <a href="https://waze.com/ul?q=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-waze.png" alt="Waze"></a>
+    <a href="https://www.google.com/maps/search/?api=1&query=9437%20Hegyk%C5%91%20Als%C3%B3szer%20utca%2018" target="_blank" rel="noopener"><img src="assets/icons/icon-googlemaps.png" alt="Google Maps"></a>
+  </div>
   <div class="footer__bottom">
     <span data-i18n="foot.copyright">© 2026 Lazuli Café · MINDEN JOG FENNTARTVA</span>
     <span class="footer__legal">
-      <a href="/adatkezeles" data-doc="adatkezeles" target="_blank" rel="noopener" data-i18n="foot.privacy">ADATVÉDELEM</a> ·
-      <a href="/aszf" data-doc="aszf" target="_blank" rel="noopener" data-i18n="foot.terms">ÁSZF</a>
+      <a href="/adatkezeles" target="_blank" rel="noopener" data-doc="adatkezeles" data-i18n="foot.privacy">ADATVÉDELEM</a> ·
+      <a href="/aszf" target="_blank" rel="noopener" data-doc="aszf" data-i18n="foot.terms">ÁSZF</a>
     </span>
   </div>
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
 <script src="i18n.js?v=20260806"></script>
+<!-- Lenis smooth scroll (saját hoston, v1.1.20) -->
+<script src="assets/js/lenis.min.js"></script>
 <script>
-  // off-canvas mobil menü
   (function(){
+    if (typeof Lenis === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    window.__lenis = lenis;
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href');
+        if (id.length > 1){ var el = document.querySelector(id); if (el){ e.preventDefault(); lenis.scrollTo(el, { offset: -90 }); } }
+      });
+    });
+  })();
+</script>
+<script>
+  (function(){
+    var nav = document.getElementById('nav');
     var btn = document.getElementById('navToggle');
     var menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
     var panel = menu.querySelector('.mobile-menu__panel');
     var lastFocused = null;
     function focusables(){ return panel.querySelectorAll('a[href], button:not([disabled])'); }
     function openMenu(){
       lastFocused = document.activeElement;
-      menu.classList.add('is-open'); menu.setAttribute('aria-hidden','false'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('menu-open');
+      menu.classList.add('is-open');
+      menu.setAttribute('aria-hidden','false');
+      btn.setAttribute('aria-expanded','true');
+      document.body.classList.add('menu-open');
+      if (window.__lenis) window.__lenis.stop();
       var f = focusables();
       if (f.length) f[0].focus();
     }
     function closeMenu(){
-      menu.classList.remove('is-open'); menu.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open');
+      menu.classList.remove('is-open');
+      menu.setAttribute('aria-hidden','true');
+      btn.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-open');
+      if (window.__lenis) window.__lenis.start();
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
     btn.addEventListener('click', openMenu);
-    menu.querySelectorAll('[data-menu-close]').forEach(function(el){ el.addEventListener('click', closeMenu); });
+    menu.querySelectorAll('[data-menu-close]').forEach(function(el){
+      el.addEventListener('click', closeMenu);
+    });
     document.addEventListener('keydown', function(e){
       if (!menu.classList.contains('is-open')) return;
       if (e.key === 'Escape'){ closeMenu(); return; }
@@ -182,93 +434,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
       }
     });
-    window.addEventListener('resize', function(){ if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu(); });
-  })();
-
-  // sticky nav összemenés görgetésnél
-  (function(){
-    var nav = document.getElementById('nav');
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 1200 && menu.classList.contains('is-open')) closeMenu();
+    });
+    // sticky nav háttér görgetésnél
     function onScroll(){ nav.classList.toggle('nav--scrolled', window.scrollY > 80); }
+    onScroll();
     window.addEventListener('scroll', onScroll, {passive:true});
   })();
-
-  // melyik dokumentum? (az URL útvonalából)
-  var DOCS = {
-    aszf:        { pdf:"assets/docs/aszf.pdf", lang:"hu", name:"Általános Szerződési Feltételek", sub:"JOGI INFORMÁCIÓK" },
-    terms:       { pdf:"assets/docs/aszf-en.pdf", lang:"en", name:"Terms & Conditions", sub:"LEGAL" },
-    agb:         { pdf:"assets/docs/aszf-de.pdf", lang:"de", name:"Allgemeine Geschäftsbedingungen", sub:"RECHTLICHES" },
-    adatkezeles: { pdf:"assets/docs/adatkezeles.pdf", lang:"hu", name:"Adatkezelési tájékoztató", sub:"JOGI INFORMÁCIÓK" },
-    privacy:     { pdf:"assets/docs/adatkezeles-en.pdf", lang:"en", name:"Privacy Policy", sub:"LEGAL" },
-    datenschutz: { pdf:"assets/docs/adatkezeles-de.pdf", lang:"de", name:"Datenschutzerklärung", sub:"RECHTLICHES" }
-  };
-  var seg = location.pathname.replace(/\/+$/,'').split('/').pop().toLowerCase();
-  var DOC = DOCS[seg] || DOCS.aszf;
-  var pdfURL = new URL(DOC.pdf, location.href).href;
-  document.getElementById("docDownload").setAttribute("href", pdfURL);
-
-  // A cím / alcím / letöltés-link nyelvi változatai — a nav nyelvváltója ezeket is
-  // frissíti, miközben ugyanezen az oldalon maradunk (a feltöltött PDF háromnyelvű).
-  var DOC_FAMILY = {
-    aszf:"aszf", terms:"aszf", agb:"aszf",
-    adatkezeles:"adatkezeles", privacy:"adatkezeles", datenschutz:"adatkezeles"
-  };
-  var DOC_I18N = {
-    aszf: {
-      hu:{ name:"Általános Szerződési Feltételek", sub:"JOGI INFORMÁCIÓK" },
-      en:{ name:"Terms & Conditions", sub:"LEGAL" },
-      de:{ name:"Allgemeine Geschäftsbedingungen", sub:"RECHTLICHES" }
-    },
-    adatkezeles: {
-      hu:{ name:"Adatkezelési tájékoztató", sub:"JOGI INFORMÁCIÓK" },
-      en:{ name:"Privacy Policy", sub:"LEGAL" },
-      de:{ name:"Datenschutzerklärung", sub:"RECHTLICHES" }
-    }
-  };
-  var DL_TEXT = { hu:"PDF megnyitása új lapon", en:"Open PDF in a new tab", de:"PDF in neuem Tab öffnen" };
-  var docFamily = DOC_FAMILY[seg] || "aszf";
-
-  function updateDocChrome(lang){
-    var info = (DOC_I18N[docFamily] && DOC_I18N[docFamily][lang]) || DOC_I18N[docFamily].hu;
-    document.title = info.name + " — Lazuli Café";
-    document.getElementById("docTitle").textContent = info.name;
-    document.getElementById("docSub").textContent = info.sub;
-    document.getElementById("docDownload").textContent = DL_TEXT[lang] || DL_TEXT.hu;
-  }
-  updateDocChrome(DOC.lang);
-
-  // a fejléc/lábléc nyelvét kezdetben az URL dönti el (nem írjuk felül a főoldal nyelvét).
-  // Az i18n.js init() után kell futnia, ezért DOMContentLoaded-re kötjük.
-  function setDocLang(){
-    if (!window.LazuliI18n) return;
-    window.LazuliI18n.applyLang(DOC.lang, false);
-    updateDocChrome(DOC.lang);
-    // A dokumentum-oldalon a zászló CSAK a nav/footer + a fenti cím/alcím/letöltés
-    // nyelvét váltja, helyben maradunk (a feltöltött PDF eleve háromnyelvű). Ezért
-    // lecseréljük a zászlógombokat, hogy ne az i18n.js alap (URL-t váltó) kezelője fusson.
-    document.querySelectorAll(".lang-flag").forEach(function (b) {
-      var clone = b.cloneNode(true);
-      b.parentNode.replaceChild(clone, b);
-      clone.addEventListener("click", function () {
-        var lang = clone.getAttribute("data-lang");
-        window.LazuliI18n.applyLang(lang, true);
-        updateDocChrome(lang);
-      });
-    });
-  }
-  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", setDocLang); }
-  else { setDocLang(); }
-</script>
-
-<!-- Adobe PDF Embed -->
-<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-  document.addEventListener("adobe_dc_view_sdk.ready", function(){
-    var adobeDCView = new AdobeDC.View({ clientId: "6ddde5ab3f7d4e5581de9cc9f273c25e", divId: "adobe-dc-view" });
-    adobeDCView.previewFile({
-      content:  { location: { url: pdfURL } },
-      metaData: { fileName: DOC.name + ".pdf" }
-    }, { embedMode: "IN_LINE" });
-  });
 </script>
 </body>
 </html>

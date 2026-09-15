@@ -17,7 +17,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Lazuli Café — Fertő-táji pékség és kávézó</title>
 <meta name="description" content="Pékség és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz. Nyitva minden nap 10:00–18:00.">
 
-<!-- nyelvi változatok (a tartalmat a JS fordítja az útvonal alapján) -->
+<!-- nyelvi változatok: mindegyiknek ÖNÁLLÓ fájlja és canonicalja van -->
+<link rel="canonical" href="https://cafe.lazuli.hu/">
 <link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/">
 <link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en">
 <link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de">
@@ -44,14 +45,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {
   "@context": "https://schema.org",
   "@type": "CafeOrCoffeeShop",
+  "@id": "https://cafe.lazuli.hu/#cafe",
   "name": "Lazuli Café",
   "image": "https://cafe.lazuli.hu/assets/img/hero-bg.jpg",
   "url": "https://cafe.lazuli.hu/",
   "telephone": "+36303767800",
   "email": "hegyko@lazuli.hu",
-  "servesCuisine": ["Kávé", "Sütemény", "Reggeli"],
+  "servesCuisine": [
+    "Kávé",
+    "Sütemény",
+    "Reggeli"
+  ],
   "priceRange": "$$",
-  "menu": "https://cafe.lazuli.hu/etlap",
+  "hasMenu": "https://cafe.lazuli.hu/etlap",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Alsószer utca 18.",
@@ -59,12 +65,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "postalCode": "9437",
     "addressCountry": "HU"
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "10:00",
-    "closes": "18:00"
-  }],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ],
   "sameAs": [
     "https://www.instagram.com/cafelazuli.hegyko/",
     "https://www.facebook.com/cafelazuli.hegyko"

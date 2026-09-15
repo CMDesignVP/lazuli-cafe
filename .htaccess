@@ -23,13 +23,21 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # --- Saját 404 oldal ---
 ErrorDocument 404 /404.html
 
-# --- Főoldal nyelvi változatai (ugyanaz az index.html, a nyelvet az URL adja) ---
-RewriteRule ^en/?$           index.html [L]
-RewriteRule ^de/?$           index.html [L]
+# --- Főoldal nyelvi változatai: nyelvenként ÖNÁLLÓ fájl ---
+# A törzs mindháromban azonos (a szöveget az i18n.js fordítja), de a <head>
+# nyelvfüggő: saját title, description, canonical és og:locale kell a keresőnek.
+RewriteRule ^en/?$           en.html [L]
+RewriteRule ^de/?$           de.html [L]
 
-# --- Dokumentum útvonalak (a JS az útvonalból ismeri fel, melyik PDF + nyelv) ---
-RewriteRule ^etlap/?$        dokumentum.html [L]
-RewriteRule ^menu/?$         dokumentum.html [L]
+# --- Étlap: nyelvenként ÖNÁLLÓ fájl és URL ---
+# Mindháromnak saját <title>, description, canonical és hreflang kell, ez pedig
+# csak külön statikus fájlokkal oldható meg (ugyanaz a minta, mint a lazuli.hu-n).
+# A PDF mindhárom oldalon ugyanaz a háromnyelvű dokumentum.
+RewriteRule ^etlap/?$        etlap.html [L]
+RewriteRule ^menu/?$         menu.html [L]
+RewriteRule ^speisekarte/?$  speisekarte.html [L]
+
+# --- Jogi dokumentumok (közös PDF-nézegető oldal, noindex) ---
 RewriteRule ^aszf/?$         dokumentum.html [L]
 RewriteRule ^terms/?$        dokumentum.html [L]
 RewriteRule ^agb/?$          dokumentum.html [L]

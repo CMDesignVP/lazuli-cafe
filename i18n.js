@@ -268,7 +268,7 @@
 
   // Nyelvfüggő dokumentum-URL-ek (a [data-doc] linkek ide mutatnak)
   var DOC_URLS = {
-    etlap:       { hu: "/etlap",       en: "/menu",        de: "/menu" },
+    etlap:       { hu: "/etlap",       en: "/menu",        de: "/speisekarte" },
     aszf:        { hu: "/aszf",        en: "/terms",       de: "/agb" },
     adatkezeles: { hu: "/adatkezeles", en: "/privacy",     de: "/datenschutz" }
   };

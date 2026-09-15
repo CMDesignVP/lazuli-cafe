@@ -5,10 +5,11 @@
 > klimatizált belső tér, ingyenes parkolás. Elvitel és előrendelés is. Nyitva minden
 > nap 10:00–18:00.
 
-Statikus, háromnyelvű (magyar / angol / német) weboldal. A nyelvet az URL adja
-(`/` = magyar, `/en` = angol, `/de` = német), a tartalmat kliensoldali JavaScript
-fordítja. A dokumentumok (étlap, jogi tájékoztatók) PDF-ként, a `dokumentum.html`
-oldalon jelennek meg.
+Statikus, háromnyelvű (magyar / angol / német) weboldal. Minden nyelvnek önálló
+URL-je van: `/` = magyar, `/en` = angol, `/de` = német. Az étlapnak szintén
+nyelvenként saját oldala van (`/etlap`, `/menu`, `/speisekarte`), és mindhárom
+ugyanazt a háromnyelvű PDF-et jeleníti meg. A jogi tájékoztatók szintén PDF-ként,
+egy közös oldalon jelennek meg, és nincsenek indexelve.
 
 ## Kapcsolat és alapadatok
 
@@ -22,9 +23,16 @@ oldalon jelennek meg.
 
 ## Kínálat / dokumentumok
 
-- [Étlap-itallap (HU)](https://cafe.lazuli.hu/etlap): kávé, sütemények és torták,
-  mentes sütik (csütörtöktől vasárnapig), reggeli, bár (long drinkek, borok, röviditalok).
-- [Menu (EN/DE)](https://cafe.lazuli.hu/menu)
+Az étlap-itallap egyetlen, háromnyelvű PDF, amely nyelvenként külön oldalon érhető el.
+Rovatai: kávék, meleg italok, üdítők és limonádék, koktélok, borok és pezsgő, fröccsök,
+palackozott sörök, röviditalok, lepények. Továbbá sütemények és torták, mentes sütik
+(csütörtöktől vasárnapig) és reggeli. Az allergénjelölések a PDF elején találhatók.
+Az árakat a PDF tartalmazza, és időnként változnak — mindig a PDF az irányadó.
+
+- [Étlap-itallap (HU)](https://cafe.lazuli.hu/etlap)
+- [Menu (EN)](https://cafe.lazuli.hu/menu)
+- [Speisekarte (DE)](https://cafe.lazuli.hu/speisekarte)
+- [Az étlap PDF közvetlenül](https://cafe.lazuli.hu/assets/docs/etlap-itallap.pdf)
 
 ## Nyelvi változatok
 

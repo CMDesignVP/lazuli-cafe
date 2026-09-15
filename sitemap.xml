@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Csak az indexelhető oldalak szerepelnek.
+  A jogi dokumentumok (aszf/terms/agb, adatkezeles/privacy/datenschutz) szándékosan
+  kimaradnak: egyetlen közös, noindex-es PDF-nézegető oldalt szolgálnak ki.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Főoldal -->
   <url>
     <loc>https://cafe.lazuli.hu/</loc>
     <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/"/>
+    <lastmod>2026-09-15</lastmod>
   </url>
-  <url><loc>https://cafe.lazuli.hu/en</loc></url>
-  <url><loc>https://cafe.lazuli.hu/de</loc></url>
+  <url>
+    <loc>https://cafe.lazuli.hu/en</loc>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/"/>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://cafe.lazuli.hu/de</loc>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/"/>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+
+  <!-- Étlap-itallap (nyelvenként önálló URL, ugyanaz a háromnyelvű PDF) -->
   <url>
     <loc>https://cafe.lazuli.hu/etlap</loc>
     <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/etlap"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/menu"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/menu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/speisekarte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/etlap"/>
+    <lastmod>2026-09-15</lastmod>
   </url>
-  <url><loc>https://cafe.lazuli.hu/menu</loc></url>
-  <url><loc>https://cafe.lazuli.hu/aszf</loc></url>
-  <url><loc>https://cafe.lazuli.hu/terms</loc></url>
-  <url><loc>https://cafe.lazuli.hu/agb</loc></url>
-  <url><loc>https://cafe.lazuli.hu/adatkezeles</loc></url>
-  <url><loc>https://cafe.lazuli.hu/privacy</loc></url>
-  <url><loc>https://cafe.lazuli.hu/datenschutz</loc></url>
+  <url>
+    <loc>https://cafe.lazuli.hu/menu</loc>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/etlap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/menu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/speisekarte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/etlap"/>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://cafe.lazuli.hu/speisekarte</loc>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://cafe.lazuli.hu/etlap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cafe.lazuli.hu/menu"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cafe.lazuli.hu/speisekarte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cafe.lazuli.hu/etlap"/>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+
 </urlset>
