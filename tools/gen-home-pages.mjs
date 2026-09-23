@@ -18,23 +18,23 @@ const BODY = src.slice(idx + marker.length); // a </head> UTÁNI teljes törzs
 const PAGES = {
   hu: {
     file: 'index.html', path: '/', locale: 'hu_HU', menu: '/etlap',
-    title: 'Lazuli Café — Fertő-táji pékség és kávézó',
-    desc: 'Pékség és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz. Nyitva minden nap 10:00–18:00.',
-    ogDesc: 'Pékség és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz.',
+    title: 'Lazuli Café — Fertő-táji cukrászda és kávézó',
+    desc: 'Cukrászda és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz. Nyitva minden nap 10:00–18:00.',
+    ogDesc: 'Cukrászda és kávézó Hegykő szívében: olasz Musetti kávé, minőségi sütemények és torták, friss reggelik, tágas terasz.',
     cuisine: ['Kávé', 'Sütemény', 'Reggeli'],
   },
   en: {
     file: 'en.html', path: '/en', locale: 'en_US', menu: '/menu',
-    title: 'Lazuli Café — Bakery and coffee house by Lake Fertő',
-    desc: 'Bakery and coffee house in the heart of Hegykő: Italian Musetti coffee, quality cakes and pastries, fresh breakfasts, spacious terrace. Open daily 10:00–18:00.',
-    ogDesc: 'Bakery and coffee house in the heart of Hegykő: Italian Musetti coffee, quality cakes and pastries, fresh breakfasts, spacious terrace.',
+    title: 'Lazuli Café — Patisserie and coffee house by Lake Fertő',
+    desc: 'Patisserie and coffee house in the heart of Hegykő: Italian Musetti coffee, quality cakes and pastries, fresh breakfasts, spacious terrace. Open daily 10:00–18:00.',
+    ogDesc: 'Patisserie and coffee house in the heart of Hegykő: Italian Musetti coffee, quality cakes and pastries, fresh breakfasts, spacious terrace.',
     cuisine: ['Coffee', 'Pastry', 'Breakfast'],
   },
   de: {
     file: 'de.html', path: '/de', locale: 'de_DE', menu: '/speisekarte',
-    title: 'Lazuli Café — Bäckerei und Kaffeehaus am Neusiedler See',
-    desc: 'Bäckerei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse. Täglich 10:00–18:00 geöffnet.',
-    ogDesc: 'Bäckerei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse.',
+    title: 'Lazuli Café — Konditorei und Kaffeehaus am Neusiedler See',
+    desc: 'Konditorei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse. Täglich 10:00–18:00 geöffnet.',
+    ogDesc: 'Konditorei und Kaffeehaus im Herzen von Hegykő: italienischer Musetti-Kaffee, hochwertige Kuchen und Torten, frische Frühstücke, großzügige Terrasse.',
     cuisine: ['Kaffee', 'Gebäck', 'Frühstück'],
   },
 };

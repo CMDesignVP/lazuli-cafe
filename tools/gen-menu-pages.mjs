@@ -116,7 +116,7 @@ for (const [lang, p] of Object.entries(PAGES)) {
         email: 'hegyko@lazuli.hu',
         image: `${ORIGIN}/assets/img/hero-bg.jpg`,
         hasMenu: { '@id': `${url}#menu` },
-        servesCuisine: ['Coffee', 'Bakery', 'Cafe'],
+        servesCuisine: ['Coffee', 'Pastry', 'Cafe'],
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Alsószer utca 18.',
