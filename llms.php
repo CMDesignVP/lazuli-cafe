@@ -7,7 +7,7 @@ header('Content-Type: text/markdown; charset=UTF-8');
 ?>
 # Lazuli Café
 
-> Pékség és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,
+> Cukrászda és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,
 > minőségi sütemények és torták, mentes sütik, friss reggelik és bár. Tágas terasz,
 > klimatizált belső tér, ingyenes parkolás. Elvitel és előrendelés is. Nyitva minden
 > nap 10:00–18:00.
