@@ -1,3 +1,10 @@
+<?php
+/* llms.txt (llmstxt.org) - a /llms.txt cimen szolgaljuk ki (.htaccess rewrite).
+   Azert PHP es nem statikus .txt: a SiteGround NGINX-e a statikus .txt fajlt charset
+   nelkul kuldi, es a bongeszo (magyar Chrome: ISO-8859-2) elrontja az ekezeteket.
+   A szoveget a zaro PHP-tag utan szerkeszd, sima Markdownkent. (#43706) */
+header('Content-Type: text/markdown; charset=UTF-8');
+?>
 # Lazuli Café
 
 > Pékség és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,

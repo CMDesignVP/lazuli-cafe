@@ -26,6 +26,12 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
   # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://documentservices.adobe.com https://*.adobe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.adobe.com; font-src 'self' data:; connect-src 'self' https://*.adobe.com https://*.adobe.io; frame-src https://www.google.com https://*.adobe.com blob:; object-src 'none'; base-uri 'self'; form-action 'self'"
 </IfModule>
 
+# --- llms.txt -> llms.php (UTF-8 fejléccel) ---
+# A statikus .txt-t a SiteGround NGINX-e charset nélkül küldi, a böngésző pedig
+# elrontja az ékezeteket. A /llms.txt fájl ezért nem létezik, a kérést a PHP
+# szolgálja ki saját Content-Type fejléccel (ugyanaz a minta, mint a cmdesign.hu-n).
+RewriteRule ^llms\.txt$ llms.php [L]
+
 # --- Saját 404 oldal ---
 ErrorDocument 404 /404.html
 
