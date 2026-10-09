@@ -1,8 +1,16 @@
 /**
  * Kávézó főoldal: nyelvenként önálló fájl (index.html / en.html / de.html).
- * A <body> BÁJTRA AZONOS marad mindháromban — a szövegeket továbbra is az
- * i18n.js fordítja az útvonal alapján. Csak a <head> lesz nyelvfüggő, mert
- * a title / description / canonical / og:locale statikusan kell a keresőnek.
+ * A <head> nyelvfüggő (title / description / canonical / og:locale).
+ *
+ * A <body> forrása az index.html, de az EN/DE fájlba a szövegek már
+ * STATIKUSAN lefordítva kerülnek (#43706): minden [data-i18n] elem az
+ * i18n.js szótárából kapja a tartalmát, a [data-doc] és [data-home] linkek
+ * a nyelvi útvonalra mutatnak. Így a kereső JavaScript nélkül is angol /
+ * német H1-et és szöveget lát. Az i18n.js futáskor ugyanezt állítja be,
+ * tehát a látogató számára nincs változás.
+ *
+ * Ellenőrzés: a magyar szótárral visszarenderelt törzsnek bájtra azonosnak
+ * kell lennie az index.html törzsével — ha nem az, a szkript leáll.
  */
 import { readFile, writeFile } from 'node:fs/promises';
 
@@ -14,6 +22,46 @@ const marker = '</head>';
 const idx = src.indexOf(marker);
 if (idx === -1) throw new Error('Nincs </head> az index.html-ben');
 const BODY = src.slice(idx + marker.length); // a </head> UTÁNI teljes törzs
+
+// --- statikus fordítás az i18n.js szótárából ---------------------------------
+const I18N = await readFile(`${REPO}/i18n.js`, 'utf8');
+// a `var NAME = { ... };` objektum-literált kivágja és kiértékeli
+function grabObject(name) {
+  const start = I18N.indexOf(`var ${name} = {`);
+  if (start === -1) throw new Error(`Nincs "var ${name}" az i18n.js-ben`);
+  const open = I18N.indexOf('{', start);
+  let depth = 0, end = open;
+  for (; end < I18N.length; end++) {
+    if (I18N[end] === '{') depth++;
+    else if (I18N[end] === '}' && --depth === 0) break;
+  }
+  return new Function(`return ${I18N.slice(open, end + 1)}`)();
+}
+const T = grabObject('T');
+const DOC_URLS = grabObject('DOC_URLS');
+
+// ugyanaz, amit az i18n.js applyLang() csinál, csak build időben
+function localize(body, lang) {
+  const dict = T[lang];
+  const problems = [];
+  let out = body.replace(
+    /<(\w+)(\s[^>]*?\sdata-i18n="([^"]+)"[^>]*|\s+data-i18n="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/g,
+    (m, tag, attrs, k1, k2, inner) => {
+      const key = k1 || k2;
+      if (inner.includes(`<${tag}`)) { problems.push(`beágyazott <${tag}>: ${key}`); return m; }
+      if (dict[key] == null) { problems.push(`hiányzó kulcs: ${key}`); return m; }
+      return `<${tag}${attrs}>${dict[key]}</${tag}>`;
+    });
+  out = out.replace(/<a\b[^>]*\sdata-doc="(\w+)"[^>]*>/g, (m, d) =>
+    DOC_URLS[d] && DOC_URLS[d][lang] ? m.replace(/href="[^"]*"/, `href="${DOC_URLS[d][lang]}"`) : m);
+  out = out.replace(/<a\b[^>]*\sdata-home[\s=>][^>]*>/g, (m) =>
+    m.replace(/href="[^"]*"/, `href="${lang === 'hu' ? '/' : '/' + lang}"`));
+  if (problems.length) throw new Error(`Fordítási hiba (${lang}):\n` + problems.join('\n'));
+  return out;
+}
+if (localize(BODY, 'hu') !== BODY) {
+  throw new Error('A magyar szótárral visszarenderelt törzs eltér az index.html-től — a szótár és a HTML elcsúszott.');
+}
 
 const PAGES = {
   hu: {
@@ -124,6 +172,6 @@ ${JSON.stringify(jsonld, null, 2)}
 </script>
 </head>`;
 
-  await writeFile(`${REPO}/${p.file}`, head + BODY, 'utf8');
+  await writeFile(`${REPO}/${p.file}`, head + localize(BODY, lang), 'utf8');
   console.log(`✓ ${p.file} (${lang}) — canonical: ${url}, hasMenu: ${ORIGIN}${p.menu}`);
 }
