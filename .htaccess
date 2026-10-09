@@ -1,5 +1,14 @@
 RewriteEngine On
 
+# --- Karakterkódolás ---
+# A .txt / .xml fájlok (robots.txt, llms.txt, sitemap.xml) charset nélkül mentek ki
+# (Content-Type: text/plain), ezért a böngésző Windows-1252-ként olvasta őket, és az
+# ékezetek meg a gondolatjel elrontva jelent meg (#43706). A fájlok UTF-8-ban vannak.
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .txt .xml .html .css .js
+</IfModule>
+
 # --- Könyvtárlistázás tiltása ---
 Options -Indexes
 
@@ -30,8 +39,8 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 ErrorDocument 404 /404.html
 
 # --- Főoldal nyelvi változatai: nyelvenként ÖNÁLLÓ fájl ---
-# A törzs mindháromban azonos (a szöveget az i18n.js fordítja), de a <head>
-# nyelvfüggő: saját title, description, canonical és og:locale kell a keresőnek.
+# A <head> nyelvfüggő (saját title, description, canonical, og:locale), és a törzs
+# szövegei is statikusan le vannak fordítva (tools/gen-home-pages.mjs, #43706).
 RewriteRule ^en/?$           en.html [L]
 RewriteRule ^de/?$           de.html [L]
 
