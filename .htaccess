@@ -1,14 +1,5 @@
 RewriteEngine On
 
-# --- Karakterkódolás ---
-# A .txt / .xml fájlok (robots.txt, llms.txt, sitemap.xml) charset nélkül mentek ki
-# (Content-Type: text/plain), ezért a böngésző Windows-1252-ként olvasta őket, és az
-# ékezetek meg a gondolatjel elrontva jelent meg (#43706). A fájlok UTF-8-ban vannak.
-AddDefaultCharset UTF-8
-<IfModule mod_mime.c>
-  AddCharset UTF-8 .txt .xml .html .css .js
-</IfModule>
-
 # --- Könyvtárlistázás tiltása ---
 Options -Indexes
 

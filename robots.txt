@@ -1,29 +1,29 @@
 # ==============================================
-# robots.txt — https://cafe.lazuli.hu
+# robots.txt - https://cafe.lazuli.hu
 # ==============================================
 
 User-agent: *
 Allow: /
 
 # ==============================================
-# AI keresők — ENGEDÉLYEZVE
+# AI keresok - ENGEDELYEZVE
 # ----------------------------------------------
-# Az alábbi botok SZÁNDÉKOSAN nincsenek felsorolva,
-# így a fenti "User-agent: *" szabály vonatkozik
-# rájuk, azaz olvashatják az oldalt és az llms.txt-t:
+# Az alabbi botok SZANDEKOSAN nincsenek felsorolva,
+# igy a fenti "User-agent: *" szabaly vonatkozik
+# rajuk, azaz olvashatjak az oldalt es az llms.txt-t:
 #
-#   OAI-SearchBot     (ChatGPT keresés)
-#   ChatGPT-User      (user által kért oldalletöltés)
-#   Claude-User       (Claude user-kérés)
-#   Claude-SearchBot  (Claude keresés)
-#   PerplexityBot     (Perplexity keresés)
+#   OAI-SearchBot     (ChatGPT kereses)
+#   ChatGPT-User      (user altal kert oldalletoltes)
+#   Claude-User       (Claude user-keres)
+#   Claude-SearchBot  (Claude kereses)
+#   PerplexityBot     (Perplexity kereses)
 #
-# FONTOS: ne adj nekik külön "User-agent" blokkot,
-# mert az felülírná a fenti * szabályt.
+# FONTOS: ne adj nekik kulon "User-agent" blokkot,
+# mert az felulirna a fenti * szabalyt.
 # ==============================================
 
 # ==============================================
-# AI tanító crawlerek — TILTVA
+# AI tanito crawlerek - TILTVA
 # ==============================================
 
 User-agent: GPTBot
@@ -38,7 +38,7 @@ User-agent: Amazonbot
 Disallow: /
 
 # ==============================================
-# SEO / agresszív crawlerek — TILTVA
+# SEO / agressziv crawlerek - TILTVA
 # ==============================================
 
 User-agent: SemrushBot
