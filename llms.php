@@ -8,9 +8,9 @@ header('Content-Type: text/markdown; charset=UTF-8');
 # Lazuli Café
 
 > Cukrászda és kávézó Hegykő szívében (Fertő-táj, Magyarország). Olasz Musetti kávé,
-> minőségi sütemények és torták, mentes sütik, friss reggelik és bár. Tágas terasz,
+> minőségi sütemények és torták, mentes sütik és bár. Tágas terasz,
 > klimatizált belső tér, ingyenes parkolás. Elvitel és előrendelés is. Nyitva minden
-> nap 10:00–18:00.
+> nap 10:00–17:00.
 
 Statikus, háromnyelvű (magyar / angol / német) weboldal. Minden nyelvnek önálló
 URL-je van: `/` = magyar, `/en` = angol, `/de` = német. Az étlapnak szintén
@@ -24,7 +24,7 @@ egy közös oldalon jelennek meg, és nincsenek indexelve.
 - Cím: 9437 Hegykő, Alsószer utca 18.
 - Telefon: +36 (30) 376 7800
 - E-mail: hegyko@lazuli.hu
-- Nyitvatartás: hétfő–vasárnap 10:00–18:00. Asztalfoglalás ajánlott péntek–szombat.
+- Nyitvatartás: hétfő–vasárnap 10:00–17:00. Asztalfoglalás ajánlott péntek–szombat.
 - Instagram: https://www.instagram.com/cafelazuli.hegyko/
 - Facebook: https://www.facebook.com/cafelazuli.hegyko
 
@@ -32,8 +32,8 @@ egy közös oldalon jelennek meg, és nincsenek indexelve.
 
 Az étlap-itallap egyetlen, háromnyelvű PDF, amely nyelvenként külön oldalon érhető el.
 Rovatai: kávék, meleg italok, üdítők és limonádék, koktélok, borok és pezsgő, fröccsök,
-palackozott sörök, röviditalok, lepények. Továbbá sütemények és torták, mentes sütik
-(csütörtöktől vasárnapig) és reggeli. Az allergénjelölések a PDF elején találhatók.
+palackozott sörök, röviditalok, lepények. Továbbá sütemények és torták, valamint mentes sütik
+(csütörtöktől vasárnapig). Az allergénjelölések a PDF elején találhatók.
 Az árakat a PDF tartalmazza, és időnként változnak — mindig a PDF az irányadó.
 
 - [Étlap-itallap (HU)](https://cafe.lazuli.hu/etlap)
